@@ -15,11 +15,11 @@ public class BaseDAO {
  URI dbUri = new URI(DATABASE_URL_PROP);
  String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + dbUri.getPath();
  BasicDataSource pool = new BasicDataSource();
- pool.setUsername("admin");
- pool.setPassword("IpassHoog");
+ pool.setUsername("rzbhfoxfyusude");
+ pool.setPassword("9982acff54b7fe17ab15923cc4bb6ac11e865e35fa52fa689776174cef90c2ff");
  if (dbUri.getUserInfo() != null) {
- pool.setUsername("admin");
- pool.setPassword("IpassHoog");
+ pool.setUsername("rzbhfoxfyusude");
+ pool.setPassword("9982acff54b7fe17ab15923cc4bb6ac11e865e35fa52fa689776174cef90c2ff");
  }
  pool.setDriverClassName("org.postgresql.Driver");
  pool.setUrl(dbUrl);
@@ -29,7 +29,9 @@ public class BaseDAO {
  } else {
 	 
  InitialContext ic = new InitialContext();
+ 
  connectionPool = (DataSource) ic.lookup("java:comp/env/jdbc/PostgresDS");
+ 
  }
  } catch (Exception e) {
  throw new RuntimeException(e);
