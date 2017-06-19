@@ -25,7 +25,7 @@
 <description></description>
 <display-name>RegisterServlet</display-name>
 <servlet-name>RegisterServlet</servlet-name>
-<servlet-class>uservalidation.RegisterServlet</servlet-class>
+<servlet-class>servlets.RegisterServlet</servlet-class>
 </servlet>
 <servlet-mapping>
 <servlet-name>RegisterServlet</servlet-name>
