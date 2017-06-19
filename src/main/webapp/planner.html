@@ -22,6 +22,7 @@
 </head>
 
 <body class="landing-page">
+<script src="jquery-3.2.1.min.js"> </script>
 <nav class="navbar navbar-fixed-top navbar-color-on-scroll navbar-transparent">
 	<div class="container">
         	<!-- Brand and toggle get grouped for better mobile display -->
@@ -87,9 +88,11 @@
         placeholder="Enter a destination location" value="" class="form-control">
 	                	<span class="material-input"></span></div>
 	                </div>
-	                 <label id="afstand">Afstand: </label> <br /> <label id="duur">Duur: </label>
-	                 <form action = "Sign_Up.html">
-	                <button type = "submit" class="btn btn-success" >Bewaar Rit</button>
+	                <div class="input-append date" style="width:150px;">
+	                <input id ="datepicker" class="datepicker form-control" type="text" value="Kies een datum"></div>
+	                <label>Afstand: </label> <label id="afstand"> </label> <br /> <label> Duur: </label><label id="duur"></label><br /> 
+	                 
+	                <button  class="btn btn-success" onclick="maakRit()" data-toggle="modal" data-target="#myModal">Bewaar Rit</button>
 	            </div>
 	  </div>
 	  <div style="float:right; width:200px;">
@@ -138,12 +141,34 @@
 	    </footer>
 
 	</div>
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel" action =>Wilt u deze rit opslaan?</h4>
+        
+      </div>
+      <div class="modal-body">
+        <p> Gekozen Datum: </p> <label id = "datum"></label>
+        <p> Uw beginpunt: </p> <label id = "begin"></label> 
+        <p> Uw eindpunt: </p> <label id = "eind"></label> 
+        <p> Afstand: </p> <label id = "afstandM"></label> 
+        <p> Duur: </p> <label id = "duurM"></label> 
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default btn-simple" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-info btn-simple">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
 </body>
 
 	<!--   Core JS Files   -->
-	<script>
-    
 
+	<script>
+	
       function initMap() {
         var map = new google.maps.Map(document.getElementById('map'), {
           mapTypeControl: false,
@@ -230,13 +255,29 @@
             console.log(info[0]["legs"]);
             
          
-            afstand.innerHTML += JSON.stringify(info[0]["legs"][0]["distance"]["text"]);
-            duur.innerHTML +=JSON.stringify(info[0]["legs"][0]["duration"]["text"]);
+         	
+            afstand.innerHTML = JSON.stringify(info[0]["legs"][0]["distance"]["text"]);
+            duur.innerHTML =JSON.stringify(info[0]["legs"][0]["duration"]["text"]);
           } else {
             window.alert('Directions request failed due to ' + status);
           }
         });
       };
+      
+      function maakRit(){
+  		var beginpunt = document.getElementById('origin-input').value;
+  		var eindpunt = document.getElementById('destination-input').value;
+  		var afstand = document.getElementById('afstand').textContent;
+  		var duur = document.getElementById('duur').textContent;
+  		var date = $("#datepicker").val();
+  		
+  		datum.innerHTML = date;
+  		begin.innerHTML = beginpunt;
+  		eind.innerHTML = eindpunt;
+  		afstandM.innerHTML = afstand;
+  		duurM.innerHTML = duur;
+  		
+  	}
 
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAL27VN2eB7RcvPYcX3wVeSQY57BbMr9V4&libraries=places&callback=initMap"
