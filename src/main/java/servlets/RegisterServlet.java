@@ -27,7 +27,7 @@ request.getRequestDispatcher("home.html").forward(request, response);
 else   //On Failure, display a meaningful message to the User.
 {
 request.setAttribute("errMessage", userRegistered);
-request.getRequestDispatcher("/Register.jsp").forward(request, response);
+request.getRequestDispatcher("/sign_up.html").forward(request, response);
 }
 }
 }
