@@ -70,43 +70,39 @@
 		<div class="section">
 		<div class="main main-raised">
 			<div class="container">
-		    	<div class="section text-center section-landing">
-	                <div class="row">
-	                    <div class="col-md-8 col-md-offset-2">
-	                        <h2 class="title">Let's talk product</h2>
-	                        <h5 class="description">This is the paragraph where you can write more details about your product. Keep you user engaged by providing meaningful information. Remember that by this time, the user is curious, otherwise he wouldn't scroll to get here. Add a button if you want the user to see more.</h5>
-	                    </div>
-	                </div>
-
-		
-	            </div>
+		    	
 				<div>
-				<div style="float:left">
-
-			<div style="width:100px;">
+				
+			<div style="float:left; width:200px;">
+			<div style="width:150px;">
 	                	<div class="form-group is-empty">
-	        	        	<input type="text" value="" placeholder="From" class="form-control">
+	        	        	<input id="origin-input" class="form-control"  type="text"
+        placeholder="Enter an origin location" value="">
+	                	<span class="material-input"></span></div>
+
+	                </div>
+			<div style="width:150px;">
+	                	<div class="form-group is-empty">
+	        	        	<input id="destination-input" type="text"
+        placeholder="Enter a destination location" value="" class="form-control">
 	                	<span class="material-input"></span></div>
 	                </div>
-			<div style="width:100px;">
-	                	<div class="form-group is-empty">
-	        	        	<input type="text" value="" placeholder="To" class="form-control">
-	                	<span class="material-input"></span></div>
-	                </div>
-			
-		</div>
-				<div align="center" style="margin:0px"   width="800"
-  height="600"
-  frameborder="0" style="border:0"> 
-			<iframe
+	                 <label id="afstand">Afstand: </label> <br /> <label id="duur">Duur: </label>
+	                 <form action = "Sign_Up.html">
+	                <button type = "submit" class="btn btn-success" >Bewaar Rit</button>
+	            </div>
+	  </div>
+	  <div style="float:right; width:200px;">
+	<label id="ritten">Opgeslagen Ritten</label>
+	
+    </div>
+    <div id="map"  align="center" style="margin:0px;width:800px;
+ height:600px;"></div>
 
-  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBZ8E9AZXpONxmBze6NaPGgCrKtjTh_ELc
-    &q=Space+Needle,Seattle+WA" allowfullscreen>
-</iframe>
-</div>
+	
 
 
-				</div>
+				
 </div>
 
 	    <footer class="footer">
@@ -145,6 +141,106 @@
 </body>
 
 	<!--   Core JS Files   -->
+	<script>
+    
+
+      function initMap() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+          mapTypeControl: false,
+          center: {lat: -33.8688, lng: 151.2195},
+          zoom: 13
+        });
+
+        new AutocompleteDirectionsHandler(map);
+      }
+
+       /**
+        * @constructor
+       */
+      function AutocompleteDirectionsHandler(map) {
+        this.map = map;
+        this.originPlaceId = null;
+        this.destinationPlaceId = null;
+        this.travelMode = 'DRIVING';
+        var originInput = document.getElementById('origin-input');
+        var destinationInput = document.getElementById('destination-input');
+        
+        this.directionsService = new google.maps.DirectionsService;
+        this.directionsDisplay = new google.maps.DirectionsRenderer;
+        this.directionsDisplay.setMap(map);
+
+        var originAutocomplete = new google.maps.places.Autocomplete(
+            originInput, {placeIdOnly: true});
+        var destinationAutocomplete = new google.maps.places.Autocomplete(
+            destinationInput, {placeIdOnly: true});
+
+        this.setupPlaceChangedListener(originAutocomplete, 'ORIG');
+        this.setupPlaceChangedListener(destinationAutocomplete, 'DEST');
+
+       
+      }
+
+      // Sets a listener on a radio button to change the filter type on Places
+      // Autocomplete.
+      AutocompleteDirectionsHandler.prototype.setupClickListener = function(id, mode) {
+        var radioButton = document.getElementById(id);
+        var me = this;
+        radioButton.addEventListener('click', function() {
+          me.travelMode = mode;
+          me.route();
+        });
+      };
+
+      AutocompleteDirectionsHandler.prototype.setupPlaceChangedListener = function(autocomplete, mode) {
+        var me = this;
+        autocomplete.bindTo('bounds', this.map);
+        autocomplete.addListener('place_changed', function() {
+          var place = autocomplete.getPlace();
+          if (!place.place_id) {
+            window.alert("Please select an option from the dropdown list.");
+            return;
+          }
+          if (mode === 'ORIG') {
+            me.originPlaceId = place.place_id;
+          } else {
+            me.destinationPlaceId = place.place_id;
+          }
+          me.route();
+        });
+
+      };
+
+      AutocompleteDirectionsHandler.prototype.route = function() {
+        if (!this.originPlaceId || !this.destinationPlaceId) {
+          return;
+        }
+        var me = this;
+
+        this.directionsService.route({
+          origin: {'placeId': this.originPlaceId},
+          destination: {'placeId': this.destinationPlaceId},
+          travelMode: this.travelMode
+        }, function(response, status) {
+          if (status === 'OK') {
+            me.directionsDisplay.setDirections(response);
+            var info = JSON.parse(JSON.stringify(response["routes"]));
+            
+            console.log(info[0]);
+            console.log( typeof info[0]["legs"]["distance"]);
+            console.log(info[0]["legs"]);
+            
+         
+            afstand.innerHTML += JSON.stringify(info[0]["legs"][0]["distance"]["text"]);
+            duur.innerHTML +=JSON.stringify(info[0]["legs"][0]["duration"]["text"]);
+          } else {
+            window.alert('Directions request failed due to ' + status);
+          }
+        });
+      };
+
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAL27VN2eB7RcvPYcX3wVeSQY57BbMr9V4&libraries=places&callback=initMap"
+        async defer></script>
 	<script src="assets/js/jquery.min.js" type="text/javascript"></script>
 	<script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
 	<script src="assets/js/material.min.js"></script>
