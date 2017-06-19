@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.util.UUID;
 
 public class ritDAO extends BaseDAO{
-public String saveRit(String email, String firstname, String wachtwoord)
+public String saveRit(String email, String beginpunt, String eindpunt, String afstand, String duur, String interval, String date)
 {
 
 	 String query = "INSERT INTO ritten values (?,?,?,?,?,?,?,?)";
