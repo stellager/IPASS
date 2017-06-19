@@ -22,7 +22,7 @@ registerDAO registerDao = new registerDAO();
 String userRegistered = registerDao.registerUser(email,name,wachtwoord);
 if(userRegistered.equals("SUCCESS"))   //On success, you can display a message to user on Home page
 {
-request.getRequestDispatcher("home.html").forward(request, response);
+request.getRequestDispatcher("home_login.html").forward(request, response);
 }
 else   //On Failure, display a meaningful message to the User.
 {
