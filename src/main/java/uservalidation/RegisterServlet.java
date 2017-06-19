@@ -19,10 +19,10 @@ String wachtwoord = request.getParameter("wachtwoord");
  
 registerDAO registerDao = new registerDAO();
 //The core Logic of the Registration application is present here. We are going to insert user data in to the database.
-String userRegistered = registerDao.registerUser(name,email,wachtwoord);
+String userRegistered = registerDao.registerUser(email,name,wachtwoord);
 if(userRegistered.equals("SUCCESS"))   //On success, you can display a message to user on Home page
 {
-request.getRequestDispatcher("/Home.jsp").forward(request, response);
+request.getRequestDispatcher("/sign_up_succesful").forward(request, response);
 }
 else   //On Failure, display a meaningful message to the User.
 {
