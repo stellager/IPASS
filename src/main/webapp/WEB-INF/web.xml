@@ -21,13 +21,14 @@
  <url-pattern>/restservices/*</url-pattern>
  
 </servlet-mapping>
-<servlet>  
-<servlet-name>Register</servlet-name>  
-<servlet-class>Register</servlet-class>  
-</servlet>  
-  
-<servlet-mapping>  
-<servlet-name>Register</servlet-name>  
-<url-pattern>/servlet/Register</url-pattern>  
-</servlet-mapping>  
+<servlet>
+<description></description>
+<display-name>RegisterServlet</display-name>
+<servlet-name>RegisterServlet</servlet-name>
+<servlet-class>uservalidation.RegisterServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+<servlet-name>RegisterServlet</servlet-name>
+<url-pattern>/RegisterServlet</url-pattern>
+</servlet-mapping>
 </web-app>

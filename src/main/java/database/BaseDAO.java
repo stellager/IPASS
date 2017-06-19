@@ -15,9 +15,11 @@ public class BaseDAO {
  URI dbUri = new URI(DATABASE_URL_PROP);
  String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + dbUri.getPath();
  BasicDataSource pool = new BasicDataSource();
+ pool.setUsername("admin");
+ pool.setPassword("IpassHoog");
  if (dbUri.getUserInfo() != null) {
- pool.setUsername(dbUri.getUserInfo().split(":")[0]);
- pool.setPassword(dbUri.getUserInfo().split(":")[1]);
+ pool.setUsername("admin");
+ pool.setPassword("IpassHoog");
  }
  pool.setDriverClassName("org.postgresql.Driver");
  pool.setUrl(dbUrl);
@@ -25,6 +27,7 @@ public class BaseDAO {
 
  connectionPool = pool;
  } else {
+	 
  InitialContext ic = new InitialContext();
  connectionPool = (DataSource) ic.lookup("java:comp/env/jdbc/PostgresDS");
  }

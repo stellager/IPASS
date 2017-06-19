@@ -2,26 +2,31 @@ package database;
 
 import java.sql.*;
 
-public class registerDAO extends BaseDAO {
-	
-	 public String findRoleForUsernameAndPassword(String username, String password) {
-	 String role = null;
-	 String query = "SELECT role FROM useraccount WHERE username = ? AND password = ?";
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+
+public class registerDAO extends BaseDAO{
+public String registerUser(String firstname, String email, String wachtwoord)
+{
+
+	 String query = "INSERT INTO users values (?,?,?)";
 
 	 try (Connection con = super.getConnection()) {
 
 	 PreparedStatement pstmt = con.prepareStatement(query);
-	 pstmt.setString(1, username);
-	 pstmt.setString(2, password);
-
-	 ResultSet rs = pstmt.executeQuery();
-	 if (rs.next())
-	 role = rs.getString("role");
-
-	 } catch (SQLException sqle) {
-	 sqle.printStackTrace();
+	 pstmt.setString(1, firstname);
+	 pstmt.setString(2, email);
+	 pstmt.setString(3, wachtwoord);
+	 int i= pstmt.executeUpdate();
+	 if (i!=0)  //Just to ensure data has been inserted into the database
+	 return "SUCCESS"; 
 	 }
-
-	 return role;
+	 catch(SQLException e)
+	 {
+	 e.printStackTrace();
 	 }
-	}
+	 return "Oops.. Something went wrong there..!";  // On failure, send a message from here.
+	 }
+	 }
