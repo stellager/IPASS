@@ -3,7 +3,8 @@ import database.loginDAO;
 import java.io.IOException;  
 import java.io.PrintWriter;  
   
-import javax.servlet.ServletException;  
+import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;  
 import javax.servlet.http.HttpServletRequest;  
 import javax.servlet.http.HttpServletResponse;  
@@ -27,19 +28,16 @@ public class LoginServlet extends HttpServlet {
       String userLoggedIn = loginDAO.loginUser(email,wachtwoord);
         if(userLoggedIn.equals("SUCCESS"))   
         {
-        	 PrintWriter writer = response.getWriter();
+        	
+        	 Cookie LoginCookie = new Cookie("login",email);
+        	 response.addCookie(LoginCookie);
+        	 request.getRequestDispatcher("home_login.html").forward(request, response);
+        	 
+  
              
-             // build HTML code
-        	 String cookie = " 'document.cookie = cookiename="+email+";'";
-             String htmlResponse = "<html>";
-             htmlResponse+="<script type='text/javascript'> function createCookie() {";
-         	htmlResponse+=cookie;
-         	htmlResponse+= "window.location.replace('home_login.html');";
-         	htmlResponse+= " }</script>";
-        	htmlResponse+="<body onload='createCookie();'> </body></html";
         	
         	     
-        	writer.println(htmlResponse);
+        	
         }
         else   //On Failure, display a meaningful message to the User.
         {
