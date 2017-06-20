@@ -171,7 +171,7 @@
       <form action="RitServlet"  method="post" class="form">
       
       	<p> Ritnaam: </p> <input id = "naam" name ="naam" readonly></input>
-        <p> Gekozen Datum: </p> <label id = "datum" name ="datum"></label>
+        <p> Gekozen Datum: </p> <input id = "datum" name ="datum" readonly></input>
         <p> Gekozen Tijd: </p> <label id = "tijdstamp" name ="tijd"></label>
         <p> Uw beginpunt: </p> <label id = "begin" name = "begin"></label> 
         <p> Uw eindpunt: </p> <label id = "eind" name = "eind"></label> 
@@ -192,25 +192,7 @@
 
 	<script>
 	
-	
-	function sendRit(){
-		var beginpunt = document.getElementById('origin-input').value;
-  		var eindpunt = document.getElementById('destination-input').value;
-  		var afstand = document.getElementById('afstand').textContent;
-  		var duur = document.getElementById('duur').textContent;
-  		var date = $("#datepicker").val();
-  		var tijd = $("#timepicker1").val();
-  		var ritnaam = "de rit maat";
-  		console.log("aangeslagen");
-	$.ajax({
-	      type: "POST",
-	      url: "RitServlet",
-	      data: { beginpunt: beginpunt, eindpunt:eindpunt, afstand:afstand, duur:duur, date:date, tijd:tijd, ritnaam:ritnaam}
-	
-	    }).done(function( msg ) {
-	     alert( "Data Saved: " + beginpunt );
-	      
-	    });}
+
 	function getCookie(name) {
 		  var value = "; " + document.cookie;
 		  var parts = value.split("; " + name + "=");
@@ -328,6 +310,7 @@
   		var date = $("#datepicker").val();
   		var tijd = $("#timepicker1").data("timepicker").getTime();
   		console.log(tijd);
+  	
   		datum.innerHTML = date;
   		begin.innerHTML = beginpunt;
   		eind.innerHTML = eindpunt;
