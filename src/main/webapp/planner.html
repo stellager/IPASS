@@ -22,7 +22,7 @@
 
 </head>
 
-<body class="landing-page">
+<body onload = "setUser()" class="landing-page">
 <script src="jquery-3.2.1.min.js"> </script>
 <nav class="navbar navbar-fixed-top navbar-color-on-scroll navbar-transparent">
 	<div class="container">
@@ -170,6 +170,20 @@
 
 	<script>
 	
+	function getCookie(name) {
+		  var value = "; " + document.cookie;
+		  var parts = value.split("; " + name + "=");
+		  if (parts.length == 2) return parts.pop().split(";").shift();
+		}
+		function setUser(){
+			var email = getCookie("login");
+			var name = getCookie("name");
+			console.log(email);
+			console.log(name);
+			var welcome = document.getElementById("welcome");
+			welcome.innerHTML = name;
+		}
+		
       function initMap() {
         var map = new google.maps.Map(document.getElementById('map'), {
           mapTypeControl: false,
