@@ -39,7 +39,7 @@
         		<ul class="nav navbar-nav navbar-right">
 					<div class="login">
 					
-					<form onSubmit="validate()" class="form" >
+					<form action="LoginServlet"  method="get" class="form" >
     				<div class="col-sm-4">
 	                	<div class="form-group is-empty">
 	        	        	<input type="text" value="" name = "email" placeholder="E-Mail" class="form-control">
@@ -172,7 +172,7 @@
 	<script>
 	var logRequest;
 	function validate() {
-		console.log(he);
+	
           try{
         	  console.log(he);
         	  logRequest = new XMLHttpRequest();
