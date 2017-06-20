@@ -36,7 +36,7 @@ request.getRequestDispatcher("/sign_up_succesful.html").forward(request, respons
 else   //On Failure, display a meaningful message to the User.
 	
 	response.setContentType("text/plain");
-	response.getWriter().println(beginpunt+eindpunt+ afstand+ duur+email+ date+ ritnaam+tijd);
+	response.getWriter().println(beginpunt+eindpunt+ afstand+ duur+email+ date+ ritnaam+tijd+ ritOpgeslagen);
 {
 
 }
