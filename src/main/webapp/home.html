@@ -177,11 +177,13 @@
         	  logRequest.open('GET', '/LoginServlet', true);
         	  logRequest.send(null);
         	  var response = logRequest.responseText;
-        	  
+        	  console.log(response);
         	  if(response = "TRUE"){
+        		  console.log(response);
         		  window.location.replace("home_login.html");
         	  }
         	  else if(response = "FALSE"){
+        		  console.log(response);
         		  alert("Gebruiker onbekend");
         	  }
           }
