@@ -34,7 +34,9 @@ if(ritOpgeslagen.equals("SUCCESS"))   //On success, you can display a message to
 request.getRequestDispatcher("/sign_up_succesful.html").forward(request, response);
 }
 else   //On Failure, display a meaningful message to the User.
-	request.getRequestDispatcher("/home.html").forward(request, response);
+	
+	response.setContentType("text/plain");
+	response.getWriter().println(beginpunt+eindpunt+ afstand+ duur+email+ date+ ritnaam+tijd);
 {
 
 }
