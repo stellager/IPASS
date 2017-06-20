@@ -9,7 +9,7 @@ import java.sql.*;
 public class loginDAO extends BaseDAO{
 	public String loginUser(String email,String wachtwoord)
 	{
-		String query = "SELECT COUNT(*) FROM users WHERE email = ? AND wachtwoord = ?";
+		String query = "SELECT COUNT(*) FROM users WHERE email = (?) AND wachtwoord = (?)";
 
 		 try (Connection con = super.getConnection()) {
 
