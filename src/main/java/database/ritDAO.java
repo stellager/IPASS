@@ -8,32 +8,35 @@ import java.sql.SQLException;
 import java.util.UUID;
 
 public class ritDAO extends BaseDAO{
-public String saveRit(String beginpunt, String eindpunt, String afstand, String duur,String email, String date, String ritnaam, String tijd)
+public String saveRit(String beginpunt, String eindpunt, int afstand, int duur,String email, String date, String ritnaam, String tijd)
 {
-	
-	 String query = "INSERT INTO ritten values (?,?,?,?,?,?,?,?,?)";
+	String querydan = "empty";	
+	 String query = "INSERT INTO ritten values (?,?,?,?,?,?,?,?)";
 
 	 try (Connection con = super.getConnection()) {
 
 	 PreparedStatement pstmt = con.prepareStatement(query);
 	 pstmt.setString(1, beginpunt);
 	 pstmt.setString(2, eindpunt);
-	 pstmt.setString(3, afstand);
-	 pstmt.setString(4, duur);
+	 pstmt.setInt(3, afstand);
+	 pstmt.setInt(4, duur);
 	 pstmt.setString(5, email);
 	 pstmt.setString(6, date);
 	 pstmt.setString(7, ritnaam);
-	 pstmt.setString(8, UUID.randomUUID().toString());
-	 pstmt.setString(9, tijd);
-	 
+	 pstmt.setString(8, tijd);
+	 querydan=pstmt.toString();
 	 int i= pstmt.executeUpdate();
-	 if (i!=0)  //Just to ensure data has been inserted into the database
+	 if (i!=0){ //Just to ensure data has been inserted into the database
 	 return "SUCCESS"; 
+	 }
+	 else{
+		 return "FAILURE";
+	 }
 	 }
 	 catch(SQLException e)
 	 {
 	 e.printStackTrace();
 	 }
-	 return "Oops.. Something went wrong there..!";  // On failure, send a message from here.
+	 return "Oops.. Something went wrong there..!"+querydan;  // On failure, send a message from here.
 	 }
 	 }
