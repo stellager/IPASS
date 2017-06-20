@@ -160,7 +160,7 @@ function getCookie(name) {
 	  if (parts.length == 2) return parts.pop().split(";").shift();
 	}
 	function setUser(){
-		var email = getCookie(login);
+		var email = getCookie("login");
 		var welcome = document.getElementById('welcome').textContent;
 		welcome.innerHTML = email;
 	}
