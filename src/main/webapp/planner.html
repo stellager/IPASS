@@ -93,7 +93,30 @@
 	                </div>
 	                <div class="input-append date" style="width:150px;">
 	                <input id ="datepicker" class="datepicker form-control" type="text" value="Kies een datum"></div>
-	                <div class="bfh-timepicker">
+	            <div class="bfh-timepicker">
+  <div class="input-prepend bfh-timepicker-toggle" data-toggle="bfh-timepicker">
+    <span class="add-on"><i class="icon-time"></i></span>
+    <input type="text" class="input-medium" readonly>
+  </div>
+  <div class="bfh-timepicker-popover">
+    <table class="table">
+      <tbody>
+        <tr>
+          <td class="hour">
+            <a class="next" href="#"><i class="icon-chevron-up"></i></a><br>
+            <input type="text" class="input-mini" readonly><br>
+            <a class="previous" href="#"><i class="icon-chevron-down"></i></a>
+          </td>
+          <td class="separator">:</td>
+          <td class="minute">
+            <a class="next" href="#"><i class="icon-chevron-up"></i></a><br>
+            <input type="text" class="input-mini" readonly><br>
+            <a class="previous" href="#"><i class="icon-chevron-down"></i></a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
 	                <label>Afstand: </label> <label id="afstand"> </label> <br /> <label> Duur: </label><label id="duur"></label><br /> 
 	                 
@@ -173,7 +196,21 @@
 	<!--   Core JS Files   -->
 
 	<script>
-	
+	function sendRit(){
+		var beginpunt = document.getElementById('origin-input').value;
+  		var eindpunt = document.getElementById('destination-input').value;
+  		var afstand = document.getElementById('afstand').textContent;
+  		var duur = document.getElementById('duur').textContent;
+  		var date = $("#datepicker").val();
+	$.ajax({
+	      type: "POST",
+	      url: "RitServlet",
+	      data: { beginpunt: beginpunt, eindpunt:eindpunt, afstand:afstand, duur:duur, date:date}
+	      }
+	    }).done(function( msg ) {
+	     // alert( "Data Saved: " + username );
+	      window.location = "http://caregap2.appspot.com/src.main.java.org.deri.hcls.caregap2.client?q=" + username;
+	    });}
 	function getCookie(name) {
 		  var value = "; " + document.cookie;
 		  var parts = value.split("; " + name + "=");
