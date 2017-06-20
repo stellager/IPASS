@@ -9,22 +9,21 @@ import java.sql.*;
 public class loginDAO extends BaseDAO{
 	public String loginUser(String email,String wachtwoord)
 	{
-		String query = "SELECT COUNT(*) FROM users WHERE email = (?) AND wachtwoord = (?)";
+		String query = "SELECT COUNT(*) FROM users WHERE email = ? AND wachtwoord = ?";
 
 		 try (Connection con = super.getConnection()) {
 
 		 PreparedStatement pstmt = con.prepareStatement(query);
 		 pstmt.setString(1, email);
-		 pstmt.setString(3, wachtwoord);
+		 pstmt.setString(2, wachtwoord);
 		 
 		 final ResultSet i= pstmt.executeQuery();
 		 final int count = i.getInt(1);
 		
 		 if (count!=0)  //Just to ensure data has been inserted into the database
 		 return "SUCCESS"; 
-		 else{
-			 return pstmt.toString();
-		 }
+		
+		 
 		 }
 		 catch(SQLException e)
 		 {
