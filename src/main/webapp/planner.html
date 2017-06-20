@@ -27,7 +27,7 @@
 		    showInputs: false,
 		    showSeconds: false
 		  });}) ;
-	$('#ritopgeslagen').hide();
+	
 
 </script>
 </head>
@@ -231,7 +231,9 @@
 			var welcome = document.getElementById("welcome");
 			welcome.innerHTML = name;
 			if(opgeslagen!=null){
-				$('#ritopgeslagen').show();
+				console.log("er is een cookie");
+				 $("#ritopgeslagen").show();
+				
 			}
 			
 		}
