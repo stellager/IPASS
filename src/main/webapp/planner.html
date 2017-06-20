@@ -21,6 +21,9 @@
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
     <link href="assets/css/material-kit.css" rel="stylesheet"/>
 <script src="jquery-3.2.1.min.js"> </script>
+<script>$(document).ready(function () {
+	 $("#timepicker1").timepicker();
+});</script>
 </head>
 
 <body onload = "setUser()" class="landing-page">
@@ -181,9 +184,7 @@
 	<!--   Core JS Files   -->
 
 	<script>
-	$(document).ready(function () {
-	 $("#timepicker1").timepicker();
-     });
+	
 	
 	function sendRit(){
 		var beginpunt = document.getElementById('origin-input').value;
