@@ -166,8 +166,10 @@
         <h4 class="modal-title" id="myModalLabel" action =>Wilt u deze rit opslaan?</h4>
         
       </div>
+      <div>
       <div class="modal-body">
-      <form onsubmit = "sendRit()">
+      <form action="sendRit()"  method="post">
+      
       	<p> Ritnaam: </p> <label id = "naam" name ="naam"></label>
         <p> Gekozen Datum: </p> <label id = "datum" name ="datum"></label>
         <p> Gekozen Tijd: </p> <label id = "tijdstamp" name ="tijd"></label>
@@ -175,12 +177,12 @@
         <p> Uw eindpunt: </p> <label id = "eind" name = "eind"></label> 
         <p> Afstand: </p> <label id = "afstandM" name = "afstand"></label> 
         <p> Duur: </p> <label id = "duurM" name="duur"></label> 
-       
-      </div>
-      <div class="modal-footer">
         <button type="button" class="btn btn-default btn-simple" data-dismiss="modal">Close</button>
         <input type="submit" value = "Save" ></a>
         </form>
+        
+        </div>
+        
       </div>
     </div>
   </div>
