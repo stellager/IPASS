@@ -81,6 +81,8 @@
 		</div>
 	</div>
 		<div class="section">
+		
+		<div class="main main-raised">
 		<div class="alert alert-success" id ="ritopgeslagen" style="display:none;" >
     <div  class="container-fluid" >
 	  <div class="alert-icon">
@@ -92,7 +94,6 @@
       <b>Success!</b> Uw rit is opgeslagen! Ga naar uw agenda om deze terug te vinden.
     </div>
 </div>
-		<div class="main main-raised">
 			<div class="container">
 			
 		    	<br/>
@@ -230,13 +231,13 @@
 			console.log(name);
 			var welcome = document.getElementById("welcome");
 			welcome.innerHTML = name;
-			
+			if(opgeslagen!=null){
 				console.log("er is een cookie");
 				 $("#ritopgeslagen").show();
 				
 			}
 			
-		
+		}
 		
 		
       function initMap() {
