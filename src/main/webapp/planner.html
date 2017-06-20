@@ -22,8 +22,11 @@
     <link href="assets/css/material-kit.css" rel="stylesheet"/>
 <script src="jquery-3.2.1.min.js"> </script>
 <script>$(document).ready(function () {
-	 $("#timepicker1").timepicker();
-});</script>
+	 $('.timepicker').timepicker({
+		    template : 'dropdown',
+		    showInputs: false,
+		    showSeconds: false
+		  });</script>
 </head>
 
 <body onload = "setUser()" class="landing-page">
