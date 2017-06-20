@@ -28,6 +28,7 @@
     // page is now ready, initialize the calendar...
 
     $('#calendar').fullCalendar({
+    	defaultView: 'agendaWeek',
     	eventSources: [
 
             // your event source
@@ -35,7 +36,7 @@
                 url: 'CalendarServlet',
                 type: 'GET',
                 data: {
-                    email: getCookie("login");
+                    email: getCookie("login")
                     
                 },
                 error: function() {
