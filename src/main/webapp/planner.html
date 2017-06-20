@@ -26,7 +26,10 @@
 		    template : 'dropdown',
 		    showInputs: false,
 		    showSeconds: false
-		  });}) ;</script>
+		  });}) ;
+	$('#ritopgeslagen').hide();
+
+</script>
 </head>
 
 <body onload = "setUser()" class="landing-page">
@@ -81,7 +84,7 @@
 		<div class="main main-raised">
 			<div class="container">
 			<div class="alert alert-success">
-    <div class="container-fluid">
+    <div id ="ritopgeslagen" class="container-fluid">
 	  <div class="alert-icon">
 		<i class="material-icons">check</i>
 	  </div>
@@ -215,11 +218,17 @@
 			var email = getCookie("login");
 			var name = getCookie("name");
 			var opgeslagen = getCookie("ritopgeslagen");
+			
 			console.log(email);
 			console.log(name);
 			var welcome = document.getElementById("welcome");
 			welcome.innerHTML = name;
+			if(opgeslagen!=null){
+				$('#ritopgeslagen').show();
+			}
+			
 		}
+		
 		
       function initMap() {
         var map = new google.maps.Map(document.getElementById('map'), {
