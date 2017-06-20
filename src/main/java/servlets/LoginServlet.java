@@ -24,13 +24,14 @@ public class LoginServlet extends HttpServlet {
       String userLoggedIn = loginDAO.loginUser(email,wachtwoord);
         if(userLoggedIn.equals("SUCCESS"))   
         {
+        	
         	 response.setContentType("text/plain");
              response.getWriter().println("TRUE");
         }
         else   //On Failure, display a meaningful message to the User.
         {
         	 response.setContentType("text/plain");
-             response.getWriter().println("FALSE");
+             response.getWriter().println("FALSE"+email+wachtwoord);
         }
       
     }  
