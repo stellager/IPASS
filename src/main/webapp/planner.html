@@ -294,8 +294,8 @@
             
          
          	
-            afstand.innerHTML = JSON.stringify(info[0]["legs"][0]["distance"]["text"]);
-            duur.innerHTML =JSON.stringify(info[0]["legs"][0]["duration"]["text"]);
+            afstand.innerHTML = JSON.stringify(info[0]["legs"][0]["distance"]["value"]);
+            duur.innerHTML =JSON.stringify(info[0]["legs"][0]["duration"]["value"]);
           } else {
             window.alert('Directions request failed due to ' + status);
           }
