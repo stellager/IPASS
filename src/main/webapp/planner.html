@@ -172,11 +172,11 @@
       
       	<p> Ritnaam: </p> <input id = "naam" name ="naam" readonly></input>
         <p> Gekozen Datum: </p> <input id = "datum" name ="datum" value = "geen datum gekozen" readonly></input>
-        <p> Gekozen Tijd: </p> <label id = "tijdstamp" name ="tijd"></label>
-        <p> Uw beginpunt: </p> <label id = "begin" name = "begin"></label> 
-        <p> Uw eindpunt: </p> <label id = "eind" name = "eind"></label> 
-        <p> Afstand: </p> <label id = "afstandM" name = "afstand"></label> 
-        <p> Duur: </p> <label id = "duurM" name="duur"></label> 
+        <p> Gekozen Tijd: </p> <input id = "tijdstamp" name ="tijd" readonly></input>
+        <p> Uw beginpunt: </p> <input id = "begin" name = "begin" readonly></input>
+        <p> Uw eindpunt: </p> <input id = "eind" name = "eind" readonly></input>
+        <p> Afstand: </p> <input id = "afstandM" name = "afstand" readonly></input>
+        <p> Duur: </p> <input id = "duurM" name="duur" readonly></input>
         <button type="button" class="btn btn-default btn-simple" data-dismiss="modal">Close</button>
         <input type="submit" value = "Save" ></a>
         </form>
@@ -311,12 +311,12 @@
   		var tijd = $("#timepicker1").data("timepicker").getTime();
   		
   		document.getElementById("datum").value = date;
+  		document.getElementById("begin").value = beginpunt;
+  		document.getElementById("eind").value = eindpunt;
+  		document.getElementById("afstandM").value = afstand;
+  		document.getElementById("duurM").value = duur;
+  		document.getElementById("tijdstamp").value = tijd;
   		
-  		begin.innerHTML = beginpunt;
-  		eind.innerHTML = eindpunt;
-  		afstandM.innerHTML = afstand;
-  		duurM.innerHTML = duur;
-  		tijdstamp.innerHTML = tijd;
   		
   		
   		
