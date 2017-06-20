@@ -38,7 +38,7 @@ if(ritOpgeslagen.equals("SUCCESS"))   //On success, you can display a message to
 {
 	 Cookie RitCookie = new Cookie("ritopgeslagen",ritnaam);
 	 response.addCookie(RitCookie);
-request.getRequestDispatcher("/sign_up_succesful.html").forward(request, response);
+request.getRequestDispatcher("/planner.html").forward(request, response);
 }
 else   //On Failure, display a meaningful message to the User.
 	
