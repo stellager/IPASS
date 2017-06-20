@@ -173,8 +173,9 @@
 	var logRequest;
 	function validate() {
           try{
+        	  console.log(he);
         	  logRequest = new XMLHttpRequest();
-        	  logRequest.open('GET', '/LoginServlet', true);
+        	  logRequest.open('GET', 'LoginServlet', true);
         	  logRequest.send(null);
         	  var response = logRequest.responseText;
         	  console.log(logRequest);
