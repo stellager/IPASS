@@ -17,21 +17,21 @@ public class loginDAO extends BaseDAO{
 		 pstmt.setString(1, email);
 		 pstmt.setString(2, wachtwoord);
 		 
-		 final ResultSet i= pstmt.executeQuery();
-		 final int count = i.getInt(1);
-		
-		 if (count!=0)  //Just to ensure data has been inserted into the database
-		 return "SUCCESS"; 
-		 else{
+		 ResultSet resultset= pstmt.executeQuery();
+		 if (!resultset.next() ) {
 			 return "NOUSER";
-		 }
+		 }else{
+			 
+		 return "SUCCESS"; 
 		 
-		 }
+		 }}
+		 
 		 catch(SQLException e)
 		 {
 		 e.printStackTrace();
 		 }
-		 return "Failure";  // On failure, send a message from here.
+		 
+		 return "Failure"+query;  // On failure, send a message from here.
 		 }
 	}
 
