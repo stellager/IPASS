@@ -39,7 +39,7 @@
         		<ul class="nav navbar-nav navbar-right">
 					<div class="login">
 					
-					<form action="validate()" method="get"  class="form" >
+					<form onSubmit="validate()" class="form" >
     				<div class="col-sm-4">
 	                	<div class="form-group is-empty">
 	        	        	<input type="text" value="" name = "email" placeholder="E-Mail" class="form-control">
@@ -177,6 +177,8 @@
         	  logRequest.open('GET', '/LoginServlet', true);
         	  logRequest.send(null);
         	  var response = logRequest.responseText;
+        	  console.log(logRequest);
+        	
         	  console.log(response);
         	  if(response = "TRUE"){
         		  console.log(response);
