@@ -1,7 +1,6 @@
 package servlets;
 import java.io.IOException;
 import javax.servlet.ServletException;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,21 +13,14 @@ public RitServlet() {
 }
 protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //Copying all the input parameters in to local variables
-String beginpunt = request.getParameter("begin");
-String eindpunt = request.getParameter("eind");
-String afstand1 = request.getParameter("afstandMetric");
-int afstand = Integer.parseInt(afstand1);
-String duur1 = request.getParameter("duurMetric");
-int duur= Integer.parseInt(duur1);
-String date = request.getParameter("datum");
-
-String ritnaam = "testnaam";
-
+String beginpunt = request.getParameter("beginpunt");
+String eindpunt = request.getParameter("eindpunt");
+String afstand = request.getParameter("afstand");
+String duur = request.getParameter("duur");
+String date = request.getParameter("date");
+String email = request.getParameter("email");
+String ritnaam = request.getParameter("ritnaam");
 String tijd = request.getParameter("tijd");
-Cookie[] cookies = request.getCookies();
-String email = cookies[0].getValue();
-
-
 ritDAO ritDAO = new ritDAO();
 //The core Logic of the Registration application is present here. We are going to insert user data in to the database.
 String ritOpgeslagen = ritDAO.saveRit(beginpunt,eindpunt, afstand, duur,email, date, ritnaam,tijd);
@@ -37,11 +29,9 @@ if(ritOpgeslagen.equals("SUCCESS"))   //On success, you can display a message to
 request.getRequestDispatcher("/sign_up_succesful.html").forward(request, response);
 }
 else   //On Failure, display a meaningful message to the User.
-	
-	response.setContentType("text/plain");
-	response.getWriter().println(beginpunt+eindpunt+ afstand+ duur+email+ date+ ritnaam+tijd+ ritOpgeslagen);
 {
-
+request.setAttribute("errMessage", ritOpgeslagen);
+request.getRequestDispatcher("/Register.jsp").forward(request, response);
 }
 }
 }
