@@ -1,0 +1,11 @@
+<html>
+<body>
+<a href="http://page_B.html" value="custom_code_a" onclick="clickLink(this)">LINK TO PAGE B</a>
+<script type="text/javascript">
+    function clickLink(a) {
+        var url1 = a.getAttribute('value');
+        document.cookie = 'cookiename=' +url1+'; expires=Wed, 1 Jan 2070 13:47:11 UTC; path=/';
+    }
+</script>
+</body>
+</html>
