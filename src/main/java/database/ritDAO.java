@@ -8,23 +8,22 @@ import java.sql.SQLException;
 import java.util.UUID;
 
 public class ritDAO extends BaseDAO{
-public String saveRit(String beginpunt, String eindpunt, double afstand, int duur,String email, String date, String ritnaam, String tijd)
+public String saveRit(String beginpunt, String eindpunt, int afstand, int duur,String email, String date, String ritnaam, String tijd)
 {
 	
-	 String query = "INSERT INTO ritten values (?,?,?,?,?,?,?,?,?)";
+	 String query = "INSERT INTO ritten values (?,?,?,?,?,?,?,?)";
 
 	 try (Connection con = super.getConnection()) {
 
 	 PreparedStatement pstmt = con.prepareStatement(query);
 	 pstmt.setString(1, beginpunt);
 	 pstmt.setString(2, eindpunt);
-	 pstmt.setDouble(3, afstand);
+	 pstmt.setInt(3, afstand);
 	 pstmt.setInt(4, duur);
 	 pstmt.setString(5, email);
 	 pstmt.setString(6, date);
 	 pstmt.setString(7, ritnaam);
-	 pstmt.setString(8, UUID.randomUUID().toString());
-	 pstmt.setString(9, tijd);
+	 pstmt.setString(8, tijd);
 	 
 	 int i= pstmt.executeUpdate();
 	 if (i!=0)  //Just to ensure data has been inserted into the database
