@@ -16,8 +16,10 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 //Copying all the input parameters in to local variables
 String beginpunt = request.getParameter("begin");
 String eindpunt = request.getParameter("eind");
-String afstand = request.getParameter("afstandMetric");
-String duur = request.getParameter("duurMetric");
+String afstand1 = request.getParameter("afstandMetric");
+int afstand = Integer.parseInt(afstand1);
+String duur1 = request.getParameter("duurMetric");
+int duur= Integer.parseInt(duur1);
 String date = request.getParameter("datum");
 
 String ritnaam = request.getParameter("naam");
