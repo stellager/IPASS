@@ -223,6 +223,10 @@
 		  if (parts.length == 2) return parts.pop().split(";").shift();
 		}
 		function setUser(){
+			var delete_cookie = function(name) {
+			    document.cookie = name + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+			};
+		}
 			var email = getCookie("login");
 			var name = getCookie("name");
 			var opgeslagen = getCookie("ritopgeslagen");
@@ -235,6 +239,7 @@
 			if (opgeslagen != null){
 				console.log(opgeslagen);
 				$('#dropdown').fadeIn();
+				delete_cookie("ritopgeslagen");
 			}
 			
 			
