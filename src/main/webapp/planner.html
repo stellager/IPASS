@@ -107,7 +107,7 @@
 	                <div class="input-append date" style="width:150px;">
 	                <input id ="datepicker" class="datepicker form-control" type="text" value="Kies een datum"></div>
 	        
-	                <label>Afstand: </label> <label id="afstand"> </label> <br /> <label> Duur: </label><label id="duur"></label><br /> 
+	                <label>Afstand: </label> <label id="afstand"> </label> <input type="hidden" name="afstandmetric"></input><br /> <label> Duur: </label><label id="duur"></label><input type="hidden" name="duurmetric"></input><br /> 
 	                 
 	                <button  class="btn btn-success" onclick="maakRit()" data-toggle="modal" data-target="#myModal">Bewaar Rit</button>
 	            </div>
@@ -294,8 +294,10 @@
             
          
          	
-            afstand.innerHTML = JSON.stringify(info[0]["legs"][0]["distance"]["value"]);
-            duur.innerHTML =JSON.stringify(info[0]["legs"][0]["duration"]["value"]);
+            afstand.innerHTML = JSON.stringify(info[0]["legs"][0]["distance"]["text"]);
+            duur.innerHTML =JSON.stringify(info[0]["legs"][0]["duration"]["text"]);
+            document.getElementById('afstandmetric').value=JSON.stringify(info[0]["legs"][0]["distance"]["value"]);
+            document.getElementById('duurmetric').value=JSON.stringify(info[0]["legs"][0]["duration"]["value"]);
           } else {
             window.alert('Directions request failed due to ' + status);
           }
