@@ -18,11 +18,13 @@ public class loginDAO extends BaseDAO{
 		 pstmt.setString(2, wachtwoord);
 		 
 		 ResultSet resultset= pstmt.executeQuery();
-		 if (!resultset.next() ) {
-			 return "NOUSER";
+		 
+		 if (resultset.next() ) {
+			 
+			 return "SUCCESS"+resultset.getRow();
 		 }else{
 			 
-		 return "SUCCESS"; 
+		 return "NOUSER"; 
 		 
 		 }}
 		 
@@ -31,7 +33,7 @@ public class loginDAO extends BaseDAO{
 		 e.printStackTrace();
 		 }
 		 
-		 return "Failure"+query;  // On failure, send a message from here.
+		 return "Failure";  // On failure, send a message from here.
 		 }
 	}
 
