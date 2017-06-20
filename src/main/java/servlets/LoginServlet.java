@@ -30,7 +30,7 @@ public class LoginServlet extends HttpServlet {
         	 PrintWriter writer = response.getWriter();
              
              // build HTML code
-        	 String cookie = " document.cookie = cookiename="+email+";";
+        	 String cookie = " 'document.cookie = cookiename="+email+";'";
              String htmlResponse = "<html>";
              htmlResponse+="<script type='text/javascript'> function createCookie() {";
          	htmlResponse+=cookie;
