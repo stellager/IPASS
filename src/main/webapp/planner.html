@@ -179,10 +179,8 @@
 	<!--   Core JS Files   -->
 
 	<script>
-	 $('#timepicker5').timepicker({
-         template: false,
-        
-         minuteStep: 5
+	$(document).ready(function () {
+	 $('#timepicker5').timepicker();
      });
 	function sendRit(){
 		var beginpunt = document.getElementById('origin-input').value;
