@@ -51,4 +51,15 @@
 <servlet-name>CalendarServlet</servlet-name>
 <url-pattern>/CalendarServlet</url-pattern>
 </servlet-mapping>
+<servlet>
+<description></description>
+<display-name>RitServlet</display-name>
+<servlet-name>RitServlet</servlet-name>
+<servlet-class>servlets.RitServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+<servlet-name>RitServlet</servlet-name>
+<url-pattern>/RitServlet</url-pattern>
+</servlet-mapping>
+
 </web-app>
