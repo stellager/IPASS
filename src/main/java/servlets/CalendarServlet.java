@@ -30,7 +30,7 @@ public class CalendarServlet extends HttpServlet {
     	JsonArrayBuilder jab = Json.createArrayBuilder();
     	JsonObjectBuilder job = Json.createObjectBuilder();
     	job.add("title", email);
-    	job.add("start", "2017-01-01");
+    	job.add("start", "2017-06-01");
     	jab.add(job);
     	JsonArray array = jab.build();
         response.getWriter().write(array.toString());
