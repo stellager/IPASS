@@ -31,7 +31,7 @@ public class LoginServlet extends HttpServlet {
         else   //On Failure, display a meaningful message to the User.
         {
         	 response.setContentType("text/plain");
-             response.getWriter().println("FALSE"+email+wachtwoord);
+             response.getWriter().println("FALSE"+email+wachtwoord+"-"+userLoggedIn);
         }
       
     }  
