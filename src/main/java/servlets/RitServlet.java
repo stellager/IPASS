@@ -1,6 +1,7 @@
 package servlets;
 import java.io.IOException;
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,14 +14,18 @@ public RitServlet() {
 }
 protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //Copying all the input parameters in to local variables
-String beginpunt = request.getParameter("beginpunt");
-String eindpunt = request.getParameter("eindpunt");
+String beginpunt = request.getParameter("begin");
+String eindpunt = request.getParameter("eind");
 String afstand = request.getParameter("afstand");
 String duur = request.getParameter("duur");
-String date = request.getParameter("date");
-String email = request.getParameter("email");
-String ritnaam = request.getParameter("ritnaam");
+String date = request.getParameter("datum");
+
+String ritnaam = request.getParameter("naam");
 String tijd = request.getParameter("tijd");
+Cookie[] cookies = request.getCookies();
+String email = cookies[0].getValue();
+
+
 ritDAO ritDAO = new ritDAO();
 //The core Logic of the Registration application is present here. We are going to insert user data in to the database.
 String ritOpgeslagen = ritDAO.saveRit(beginpunt,eindpunt, afstand, duur,email, date, ritnaam,tijd);
