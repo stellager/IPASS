@@ -26,7 +26,7 @@ public class LoginServlet extends HttpServlet {
         loginDAO loginDAO = new loginDAO();
   
       String userLoggedIn = loginDAO.loginUser(email,wachtwoord);
-        if(userLoggedIn.equals("SUCCESS"))   
+        if(userLoggedIn.contains("SUCCESS"))   
         {
         	
         	 Cookie LoginCookie = new Cookie("login",email);

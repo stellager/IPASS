@@ -21,7 +21,7 @@ public class loginDAO extends BaseDAO{
 		 
 		 if (resultset.next() ) {
 			 
-			 return "SUCCESS";
+			 return "SUCCESS"+resultset.getString(2);
 		 }else{
 			 
 		 return "NOUSER"; 
