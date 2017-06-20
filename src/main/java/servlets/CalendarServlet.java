@@ -1,8 +1,10 @@
 package servlets;
 import database.loginDAO;
 import java.io.IOException;  
-import java.io.PrintWriter;  
-  
+import java.io.PrintWriter;
+
+import javax.json.Json;
+import javax.json.*;
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;  
@@ -24,10 +26,13 @@ public class CalendarServlet extends HttpServlet {
     	String start = request.getParameter("start");
     	String eind = request.getParameter("end");
     	
-    	
-    	
-    	
-        response.getWriter().write("events: [{title: 'Event1',start: '2011-04-04'},{title: 'Event2',start: '2011-05-05'}]");
+    	JsonArrayBuilder jab = Json.createArrayBuilder();
+    	JsonObjectBuilder job = Json.createObjectBuilder();
+    	job.add("title", "event1");
+    	job.add("start", "2017-01-01");
+    	jab.add(job);
+    	JsonArray array = jab.build();
+        response.getWriter().write(array.toString());
     	
     	
     }
