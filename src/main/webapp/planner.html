@@ -178,7 +178,9 @@
         
       </div>
       <div class="modal-body">
+      	<p> Ritnaam: </p> <label id = "naam" name ="naam"></label>
         <p> Gekozen Datum: </p> <label id = "datum" name ="datum"></label>
+        <p> Gekozen Tijd: </p> <label id = "tijd" name ="tijd"></label>
         <p> Uw beginpunt: </p> <label id = "begin" name = "begin"></label> 
         <p> Uw eindpunt: </p> <label id = "eind" name = "eind"></label> 
         <p> Afstand: </p> <label id = "afstandM" name = "afstand"></label> 
@@ -206,10 +208,10 @@
 	      type: "POST",
 	      url: "RitServlet",
 	      data: { beginpunt: beginpunt, eindpunt:eindpunt, afstand:afstand, duur:duur, date:date}
-	      }
+	      
 	    }).done(function( msg ) {
-	     // alert( "Data Saved: " + username );
-	      window.location = "http://caregap2.appspot.com/src.main.java.org.deri.hcls.caregap2.client?q=" + username;
+	     alert( "Data Saved: " + beginpunt );
+	      
 	    });}
 	function getCookie(name) {
 		  var value = "; " + document.cookie;
