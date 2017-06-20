@@ -22,7 +22,7 @@ public String registerUser(String email, String firstname, String wachtwoord)
 	 
 	 int i= pstmt.executeUpdate();
 	 if (i!=0)  //Just to ensure data has been inserted into the database
-	 return "SUCCESS"; 
+	 return "SUCCESS"+pstmt.toString(); 
 	 }
 	 catch(SQLException e)
 	 {
