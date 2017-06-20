@@ -22,7 +22,9 @@ public class loginDAO extends BaseDAO{
 		
 		 if (count!=0)  //Just to ensure data has been inserted into the database
 		 return "SUCCESS"; 
-		
+		 else{
+			 return "NOUSER";
+		 }
 		 
 		 }
 		 catch(SQLException e)
