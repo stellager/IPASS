@@ -309,9 +309,9 @@
   		var duur = document.getElementById('duur').textContent;
   		var date = $("#datepicker").val();
   		var tijd = $("#timepicker1").data("timepicker").getTime();
-  		console.log(tijd);
-  	
-  		datum.innerHTML = date;
+  		
+  		document.getElementById("datum").value = date;
+  		
   		begin.innerHTML = beginpunt;
   		eind.innerHTML = eindpunt;
   		afstandM.innerHTML = afstand;
