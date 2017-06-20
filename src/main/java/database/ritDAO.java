@@ -10,7 +10,7 @@ import java.util.UUID;
 public class ritDAO extends BaseDAO{
 public String saveRit(String beginpunt, String eindpunt, String afstand, String duur,String email, String date, String ritnaam, String tijd)
 {
-
+	
 	 String query = "INSERT INTO ritten values (?,?,?,?,?,?,?,?,?)";
 
 	 try (Connection con = super.getConnection()) {

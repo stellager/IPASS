@@ -191,10 +191,12 @@
   		var afstand = document.getElementById('afstand').textContent;
   		var duur = document.getElementById('duur').textContent;
   		var date = $("#datepicker").val();
+  		var tijd = $("#timepicker1").val();
+  		var ritnaam = "de rit maat";
 	$.ajax({
 	      type: "POST",
 	      url: "RitServlet",
-	      data: { beginpunt: beginpunt, eindpunt:eindpunt, afstand:afstand, duur:duur, date:date}
+	      data: { beginpunt: beginpunt, eindpunt:eindpunt, afstand:afstand, duur:duur, date:date, tijd:tijd, ritnaam:ritnaam}
 	      
 	    }).done(function( msg ) {
 	     alert( "Data Saved: " + beginpunt );
