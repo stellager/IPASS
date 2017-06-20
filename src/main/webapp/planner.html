@@ -21,7 +21,12 @@
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
     <link href="assets/css/material-kit.css" rel="stylesheet"/>
 <script src="jquery-3.2.1.min.js"> </script>
-
+<script>$(document).ready(function () {
+	 $('.timepicker').timepicker({
+		    template : 'dropdown',
+		    showInputs: false,
+		    showSeconds: false
+		  });</script>
 </head>
 
 <body onload = "setUser()" class="landing-page">
@@ -95,12 +100,10 @@
 	                	<span class="material-input"></span></div>
 	                </div>
 	                
-	                 <div class="input-append bootstrap-timepicker-component">
-    <input type="text" class="timepicker input-small">
-    <span class="add-on">
-        <i class="icon-time"></i>
-    </span>
-</div>
+	                 <div class="input-group bootstrap-timepicker timepicker" style="width:150px;">
+            <input id="timepicker1" type="text" class="form-control input-small">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+        </div>
 	                <div class="input-append date" style="width:150px;">
 	                <input id ="datepicker" class="datepicker form-control" type="text" value="Kies een datum"></div>
 	        
@@ -174,7 +177,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default btn-simple" data-dismiss="modal">Close</button>
-        <button type="button" onclick = "sendRit()" class="btn btn-info btn-simple">Save</button>
+        <button type="button" onclick = "sendRit() class="btn btn-info btn-simple">Save</button>
       </div>
     </div>
   </div>
@@ -182,14 +185,7 @@
 </body>
 
 	<!--   Core JS Files   -->
-<script type="text/javascript">
 
-  $('.timepicker').timepicker({
-    template : 'dropdown',
-    showInputs: false,
-    showSeconds: false
-  });
-</script>
 	<script>
 	
 	
