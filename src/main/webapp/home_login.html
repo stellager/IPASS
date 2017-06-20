@@ -161,7 +161,7 @@ function getCookie(name) {
 	}
 	function setUser(){
 		var email = getCookie("login");
-		var welcome = document.getElementById('welcome').textContent;
+		var welcome = document.getElementById('welcome');
 		welcome.innerHTML = email;
 	}
 	
