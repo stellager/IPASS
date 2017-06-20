@@ -28,9 +28,9 @@ public class LoginServlet extends HttpServlet {
       String userLoggedIn = loginDAO.loginUser(email,wachtwoord);
         if(userLoggedIn.contains("SUCCESS"))   
         {
-        	String name = userLoggedIn.substring(7,-1);
+        	String name = userLoggedIn.substring(7);
         	 Cookie LoginCookie = new Cookie("login",email);
-        	 Cookie NameCookie = new Cookie("login",name);
+        	 Cookie NameCookie = new Cookie("name",name);
         	 response.addCookie(LoginCookie);
         	 response.addCookie(NameCookie);
         	 request.getRequestDispatcher("home_login.html").forward(request, response);
