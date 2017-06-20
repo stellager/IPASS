@@ -203,7 +203,9 @@
 </body>
 
 	<!--   Core JS Files   -->
-
+<script type="text/javascript">
+    $('.modal').parent().on('show.bs.modal', function (e) { $(e.relatedTarget.attributes['data-target'].value).appendTo('body'); })
+</script>
 	<script>
 	
 
