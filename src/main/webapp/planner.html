@@ -321,7 +321,7 @@
   		var afstand = document.getElementById('afstand').textContent;
   		var duur = document.getElementById('duur').textContent;
   		var date = $("#datepicker").val();
-  		var tijd = $("#timepicker1").val();
+  		var tijd = $("#timepicker").data("timepicker").getTime();
   		
   		datum.innerHTML = date;
   		begin.innerHTML = beginpunt;
