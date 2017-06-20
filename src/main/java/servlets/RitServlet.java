@@ -23,7 +23,7 @@ String duur1 = request.getParameter("duurMetric");
 int duur= Integer.parseInt(duur1);
 String date = request.getParameter("datum");
 
-String ritnaam = "testnaam";
+String ritnaam = request.getParameter("naam");
 
 String tijd = request.getParameter("tijd");
 Cookie[] cookies = request.getCookies();
