@@ -26,12 +26,8 @@ public String saveRit(String beginpunt, String eindpunt, int afstand, int duur,S
 	 pstmt.setString(8, tijd);
 	 querydan=pstmt.toString();
 	 int i= pstmt.executeUpdate();
-	 if (i!=0){ //Just to ensure data has been inserted into the database
+	 if (i!=0)  //Just to ensure data has been inserted into the database
 	 return "SUCCESS"; 
-	 }
-	 else{
-		 return "FAILURE";
-	 }
 	 }
 	 catch(SQLException e)
 	 {
@@ -40,3 +36,4 @@ public String saveRit(String beginpunt, String eindpunt, int afstand, int duur,S
 	 return "Oops.. Something went wrong there..!"+querydan;  // On failure, send a message from here.
 	 }
 	 }
+	
