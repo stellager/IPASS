@@ -25,10 +25,11 @@ public class CalendarServlet extends HttpServlet {
     	
     	String start = request.getParameter("start");
     	String eind = request.getParameter("end");
+    	String email = request.getParameter("email");
     	
     	JsonArrayBuilder jab = Json.createArrayBuilder();
     	JsonObjectBuilder job = Json.createObjectBuilder();
-    	job.add("title", "event1");
+    	job.add("title", email);
     	job.add("start", "2017-01-01");
     	jab.add(job);
     	JsonArray array = jab.build();

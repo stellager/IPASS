@@ -34,7 +34,10 @@
             {
                 url: 'CalendarServlet',
                 type: 'GET',
-      
+                data: {
+                    email: getCookie("login");
+                    
+                },
                 error: function() {
                     alert('there was an error while fetching events!');
                 },
