@@ -92,9 +92,9 @@
         placeholder="Enter a destination location" value="" class="form-control">
 	                	<span class="material-input"></span></div>
 	                </div>
-	                 <div class="input-group bootstrap-timepicker timepicker">
-            <input id="timepicker1" type="text" class="form-control input-small">
-            <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+	                <div class="bootstrap-timepicker">
+            <input id="timepicker5" type="text" class="input-small">
+            <i class="icon-time"></i>
         </div>
 	                <div class="input-append date" style="width:150px;">
 	                <input id ="datepicker" class="datepicker form-control" type="text" value="Kies een datum"></div>
@@ -179,6 +179,11 @@
 	<!--   Core JS Files   -->
 
 	<script>
+	 $('#timepicker5').timepicker({
+         template: false,
+         showInputs: false,
+         minuteStep: 5
+     });
 	function sendRit(){
 		var beginpunt = document.getElementById('origin-input').value;
   		var eindpunt = document.getElementById('destination-input').value;
@@ -333,7 +338,7 @@
  
 	<!--  Plugin for the Datepicker, full documentation here: http://www.eyecon.ro/bootstrap-datepicker/ -->
 	<script src="assets/js/bootstrap-datepicker.js" type="text/javascript"></script>
-   <script src = "assets/js/bootstrap-timepicker.js" type="text/javascript" ></script>
+   <script type="text/javascript" src="js/bootstrap-timepicker.min.js"></script>
 	<!-- Control Center for Material Kit: activating the ripples, parallax effects, scripts from the example pages etc -->
 	<script src="assets/js/material-kit.js" type="text/javascript"></script>
 
