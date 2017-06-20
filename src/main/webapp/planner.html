@@ -107,7 +107,7 @@
 	                <div class="input-append date" style="width:150px;">
 	                <input id ="datepicker" class="datepicker form-control" type="text" value="Kies een datum"></div>
 	        
-	                <label>Afstand: </label> <label id="afstand"> </label> <input type="hidden" name="afstandmetric"></input><br /> <label> Duur: </label><label id="duur"></label><input type="hidden" name="duurmetric"></input><br /> 
+	                <label>Afstand: </label> <label id="afstand"> </label> <input type="hidden" id="afstandmetric"></input><br /> <label> Duur: </label><label id="duur"></label><input type="hidden" id="duurmetric"></input><br /> 
 	                 
 	                <button  class="btn btn-success" onclick="maakRit()" data-toggle="modal" data-target="#myModal">Bewaar Rit</button>
 	            </div>
@@ -177,6 +177,8 @@
         <p> Uw eindpunt: </p> <input id = "eind" name = "eind" readonly></input>
         <p> Afstand: </p> <input id = "afstandM" name = "afstand" readonly></input>
         <p> Duur: </p> <input id = "duurM" name="duur" readonly></input>
+        <input id = "afstandMetric" name = "afstandMetric" type="hidden"></input>
+       <input id = "duurMetric" name="duurMetric" type="hidden"></input>
         <button type="button" class="btn btn-default btn-simple" data-dismiss="modal">Close</button>
         <input type="submit" value = "Save" ></a>
         </form>
