@@ -26,12 +26,11 @@ ritDAO ritDAO = new ritDAO();
 String ritOpgeslagen = ritDAO.saveRit(beginpunt,eindpunt, afstand, duur,email, date, ritnaam,tijd);
 if(ritOpgeslagen.equals("SUCCESS"))   //On success, you can display a message to user on Home page
 {
-request.getRequestDispatcher("/sign_up_succesful.html").forward(request, response);
+
 }
 else   //On Failure, display a meaningful message to the User.
 {
-request.setAttribute("errMessage", ritOpgeslagen);
-request.getRequestDispatcher("/Register.jsp").forward(request, response);
+
 }
 }
 }
