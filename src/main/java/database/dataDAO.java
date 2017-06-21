@@ -32,7 +32,7 @@ public class dataDAO extends BaseDAO{
 			 count+=1;
 		    	JsonObjectBuilder job = Json.createObjectBuilder();
 		    	
-		    	double raw= resultset.getInt(2)/360;
+		    	double raw= resultset.getInt(2)/3600;
 		    	 
 		    	    String[] arr=String.valueOf(raw).split("\\.");
 		    	    
