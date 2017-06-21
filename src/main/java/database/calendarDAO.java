@@ -3,6 +3,7 @@ package database;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.time.LocalDate;
 
 import javax.json.Json;
 import javax.json.JsonArray;
@@ -33,10 +34,26 @@ public class calendarDAO extends BaseDAO{
 		    	JsonObjectBuilder job = Json.createObjectBuilder();
 		    	
 		    	job.add("title", resultset.getString(7));
+		    	
 		    	String datetime = resultset.getString(6)+"T"+resultset.getString(8);
-		    	job.add("start", datetime);
 		    	
 		    	
+		    	timefix timefix = new timefix();
+			 	String tijd = timefix.addedTime(resultset.getString(8),resultset.getInt(4));
+		    	String status = tijd.substring(tijd.indexOf("x"));
+		    	String eindtijd = tijd.substring(0,tijd.indexOf("x"));
+		    	if(status.equals("xsamedate")){
+		    		job.add("end",datetime+"T"+ eindtijd);
+		    		job.add("start", datetime);
+		    		jab.add(job);
+		    	}
+		    	if(status.equals("xnextdate")){
+		  
+		    		String sourceDate =  resultset.getString(6);
+		    		String newdatetime = LocalDate.parse(sourceDate).plusDays(1).toString();
+		    		job.add("end", newdatetime+"T"+eindtijd);
+		    		job.add("start", newdatetime);
+		    	}
 		    	jab.add(job);
 			 
 		 } 
