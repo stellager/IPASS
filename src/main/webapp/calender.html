@@ -27,10 +27,7 @@
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
     <link href="assets/css/material-kit.css" rel="stylesheet"/>
 <script>	$(document).ready(function() {
-    var date = new Date();
-	var d = date.getDate();
-	var m = date.getMonth();
-	var y = date.getFullYear();
+    
 	
 	/*  className colors
 	
@@ -39,10 +36,12 @@
 	*/		
 	
 	
+
 	/* initialize the calendar
 	-----------------------------------------------------------------*/
 	
 	var calendar =  $('#calendar').fullCalendar({
+		
 		header: {
 			left: 'title',
 			center: 'agendaDay,agendaWeek,month',
@@ -50,8 +49,9 @@
 		},
 		editable: false,
 		firstDay: 1, //  1(Monday) this can be changed to 0(Sunday) for the USA system
-		selectable: false,
-		defaultView: 'week',
+		selectable: true,
+		allDayDefault: false,
+		defaultView: 'month',
 		
 		axisFormat: 'h:mm',
 		columnFormat: {
@@ -74,8 +74,8 @@
 					{
 						title: title,
 						start: start,
-						end: end,
-						allDay: allDay
+						end: end
+						
 					},
 					true // make the event "stick"
 				);
@@ -84,6 +84,7 @@
 		},
 		
 		eventSources: [
+
             // your event source
             {
                 url: 'CalendarServlet',
@@ -97,8 +98,20 @@
                 }
                
             }
+
             // any other sources...
-        ]			
+
+        ],		
+        eventAfterRender: function(event, $el, view ) {
+            var formattedTime = $.fullCalendar.formatDates(event.start, event.end, "HH:mm { - HH:mm}");
+            // If FullCalendar has removed the title div, then add the title to the time div like FullCalendar would do
+            if($el.find(".fc-event-title").length === 0) {
+                $el.find(".fc-event-time").text(formattedTime + " - " + event.title);
+            }
+            else {
+                $el.find(".fc-event-time").text(formattedTime);
+            }
+        }
 	});
 	
 	
@@ -227,3 +240,7 @@ function getCookie(name) {
 	<script src="assets/js/material-kit.js" type="text/javascript"></script>
 
 </html>
+
+
+
+
