@@ -75,7 +75,7 @@
 			<h1 >Overzicht ritten</h1>
 			
 			<p> Deze maand </p>
-		    	<table class = "table" id="countryTable" onload = "getAjax();">
+		    	<table class = "table" id="countryTable">
 		    	<tbody>
  <tr> <th>Ritnaam </th> <th> Aantal </th> <th> Totaal KM </th> <th> Totaal uren </th> </tr>
  </tbody>
@@ -122,6 +122,7 @@
 	</div>
 </body>
 <script>
+window.onload = getAjax; 
 function getCookie(name) {
 	  var value = "; " + document.cookie;
 	  var parts = value.split("; " + name + "=");
