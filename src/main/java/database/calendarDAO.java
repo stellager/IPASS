@@ -43,13 +43,7 @@ public class calendarDAO extends BaseDAO{
 			 
 			 
 		    	
-		    	SimpleDateFormat df = new SimpleDateFormat("yyyy:HH:mm");
-		    	java.util.Date d = df.parse(datetime);
-		    	Calendar date = Calendar.getInstance();
-		    	date.setTime(d);
-		    	long t= date.getTimeInMillis();
-		    	Date afterAddingTenMins=new Date(t + (minuten * 60000));
-			 	job.add("end", afterAddingTenMins.toString());
+		    	
 		    	
 		    	jab.add(job);
 			 
