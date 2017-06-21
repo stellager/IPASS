@@ -1,6 +1,7 @@
 package servlets;
 import java.io.IOException;
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -26,6 +27,8 @@ request.getRequestDispatcher("home_login.html").forward(request, response);
 }
 else   //On Failure, display a meaningful message to the User.
 {
+	Cookie LoginCookie = new Cookie("failed","try");
+	response.addCookie(LoginCookie);
 request.setAttribute("errMessage", userRegistered);
 request.getRequestDispatcher("/sign_up.html").forward(request, response);
 }
