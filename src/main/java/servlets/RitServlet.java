@@ -28,11 +28,11 @@ timefix timefix = new timefix();
 String tijd = timefix.fixedTime(request.getParameter("tijd"));
 Cookie[] cookies = request.getCookies();
 
-String email;
+String email=null;
 for (Cookie cookie : cookies) {
 	   if (cookie.getName().equals("login")) {
 		  email = cookie.getValue();
-	    }
+	    }}
 
 
 ritDAO ritDAO = new ritDAO();
