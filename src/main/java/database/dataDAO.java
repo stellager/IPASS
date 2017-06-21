@@ -45,7 +45,7 @@ public class dataDAO extends BaseDAO{
 			 	job.add("ritnaam", resultset.getString(1));
 			 	job.add("keergereden",Integer.toString(resultset.getInt(4)));
 			 	job.add("totaalkm", String.valueOf(round));
-			 	job.add("totaaltijd", "Totale tijd: "+uren+" uur en "+minuten+minuten1+minuten2+uren+raw+" minuten.");
+			 	job.add("totaaltijd", "Totale tijd: "+uren+" uur en "+minuten+minuten1+minuten2+uren+raw+resultset.getInt(2)+" minuten.");
 			 	
 		    	jab.add(job);
 		    	
