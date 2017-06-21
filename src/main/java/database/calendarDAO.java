@@ -51,8 +51,9 @@ public class calendarDAO extends BaseDAO{
 		    	Date afterAddingTenMins=new Date(t + (minuten * 60000));
 		    	date.setTime(afterAddingTenMins);
 		    	String format = df.format(date.getTime());
-		    	
-			 	job.add("title", format);
+		    	StringBuilder enddate = new StringBuilder(format);
+		    	enddate.setCharAt(10, 'T');
+			 	job.add("title", enddate.toString());
 		    	
 		    	jab.add(job);
 			 
