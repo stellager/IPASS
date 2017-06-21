@@ -114,7 +114,11 @@
 	</div>
 </body>
 <script>
-
+var el = document.getElementById("clickMe");
+if (el.addEventListener)
+    el.addEventListener("click", doFunction, false);
+else if (el.attachEvent)
+    el.attachEvent('onclick', doFunction);
 function getCookie(name) {
 	  var value = "; " + document.cookie;
 	  var parts = value.split("; " + name + "=");
@@ -129,7 +133,8 @@ function getCookie(name) {
 		welcome.innerHTML = name;
 	}
 	function getAjax() {
-		var request = $.ajax({
+		 
+		$.ajax({
 		    url: 'DataServlet',
 		    type: 'GET',
 		    data: { email: getCookie("login")} ,
@@ -137,26 +142,13 @@ function getCookie(name) {
 		});
 
 		request.done(function(data) {
-			console.log("success");
-		$.each(data, function loadData(){
-					
-
-		$("#countryTable").append(
-		click+"<td>"+this.ritnaam+ "</td><td>"+this.keergereden+"</td><td>"+this.totaalkm+"</td><td>"+this.totaaltijd+"</td><td>");
-	 });
+		      console.log("success");
 		});
-		
-	 	
+
 		request.fail(function(jqXHR, textStatus) {
 			console.log("failure");
 		});
 	}
-	var el = document.getElementById("clickMe");
-	if (el.addEventListener)
-	    el.addEventListener("click", getAjax, false);
-	else if (el.attachEvent)
-	    el.attachEvent('onclick', getAjax);
-	
 	</script>
 	<!--   Core JS Files   -->
 	
