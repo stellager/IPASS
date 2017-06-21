@@ -42,7 +42,7 @@ public class dataDAO extends BaseDAO{
 			    double rawkm = resultset.getInt(3)/1000;
 			    double round = (int)rawkm*10 /10;
 			 	job.add("ritnaam", resultset.getString(1));
-			 	job.add("keer gereden",Integer.toString(resultset.getInt(4)));
+			 	job.add("keergereden",Integer.toString(resultset.getInt(4)));
 			 	job.add("totaalkm", String.valueOf(round));
 			 	job.add("totaaltijd", "Totale tijd: "+Integer.toString(uren)+" uur en "+Integer.toString(minuten)+" minuten.");
 			 	
