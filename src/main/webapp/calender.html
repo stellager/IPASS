@@ -27,10 +27,7 @@
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
     <link href="assets/css/material-kit.css" rel="stylesheet"/>
 <script>	$(document).ready(function() {
-    var date = new Date();
-	var d = date.getDate();
-	var m = date.getMonth();
-	var y = date.getFullYear();
+    
 	
 	/*  className colors
 	
@@ -54,7 +51,12 @@
 		selectable: true,
 		defaultView: 'month',
 		
-		
+		axisFormat: 'h:mm',
+		columnFormat: {
+            month: 'ddd',    // Mon
+            week: 'ddd d', // Mon 7
+            day: 'dddd M/d',  // Monday 9/7
+            agendaDay: 'dddd d'
         },
         titleFormat: {
             month: 'MMMM yyyy', // September 2009
@@ -70,7 +72,7 @@
 					{
 						title: title,
 						start: start,
-						end: end,
+						end: end
 						
 					},
 					true // make the event "stick"
