@@ -57,6 +57,7 @@ public class calendarDAO extends BaseDAO{
 			 	job.add("title",resultset.getString(7));
 			 	job.add("allDay", "false");
 			 	job.add("id", count);
+			 	job.add("className", "info");
 		    	jab.add(job);
 			 
 		 } 
