@@ -70,12 +70,12 @@
 		<div class="section">
 		<div class="main main-raised">
 			<div class="container">
-			<input id="clickMe" type="button" value="clickme" onclick="getAjax();" />
+			<input id="clickMe" type="button" value="clickme"  />
 			
 			<h1 >Overzicht ritten</h1>
 			
 			<p> Deze maand </p>
-		    	<table class = "table" id="countryTable">
+		    	<table class = "table" id="countryTable" onload = "getAjax();">
 		    	<tbody>
  <tr> <th>Ritnaam </th> <th> Aantal </th> <th> Totaal KM </th> <th> Totaal uren </th> </tr>
  </tbody>
@@ -163,11 +163,7 @@ function getCookie(name) {
 		window.location.href = 'index.html';
 		
 	}
-	var el = document.getElementById("clickMe");
-	if (el.addEventListener)
-	    el.addEventListener("click", getAjax, false);
-	else if (el.attachEvent)
-	    el.attachEvent('onclick', getAjax);
+
 	</script>
 	<!--   Core JS Files   -->
 	
