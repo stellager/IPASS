@@ -17,7 +17,7 @@ public class dataDAO extends BaseDAO{
 	JsonArrayBuilder jab = Json.createArrayBuilder();
 	public JsonArray getData(String email)
 	{
-		String query = "SELECT * FROM users WHERE email = ?";
+		String query = "SELECT ritnaam , SUM(duur) AS som , SUM(afstand), count(ritnaam) FROM ritten where email = '?' GROUP BY ritnaam ORDER BY som DESC";
 
 		 try (Connection con = super.getConnection()) {
 
