@@ -7,7 +7,9 @@ public String fixedTime(String time){
 		return newtime;
 	}
 	else{
-		String newtime = time.substring(0, (time.indexOf("P")-1));
+		String newtime2 = time.substring(0, (time.indexOf("P")-1));
+		 int i =Integer.parseInt(newtime2);
+		String newtime = Integer.toString(i+12);
 		return newtime;
 	}
 }
