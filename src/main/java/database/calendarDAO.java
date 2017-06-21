@@ -3,13 +3,20 @@ package database;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+
+import javax.json.Json;
+import javax.json.JsonArray;
+import javax.json.JsonArrayBuilder;
+import javax.json.JsonObjectBuilder;
+
 import java.sql.*;
 
 
 public class calendarDAO extends BaseDAO{
-	public String loginUser(String email)
+	JsonArrayBuilder jab = Json.createArrayBuilder();
+	public JsonArray getCalendar(String email)
 	{
-		String query = "SELECT * FROM users WHERE email = ? AND wachtwoord = ?";
+		String query = "SELECT * FROM ritten WHERE email = ?";
 
 		 try (Connection con = super.getConnection()) {
 
@@ -19,21 +26,30 @@ public class calendarDAO extends BaseDAO{
 		 
 		 ResultSet resultset= pstmt.executeQuery();
 		 
-		 if (resultset.next() ) {
+	    	
+		
+		 while (resultset.next() ) {
 			 
-			 return "SUCCESS"+resultset.getString(2);
-		 }else{
+		    	JsonObjectBuilder job = Json.createObjectBuilder();
+		    	
+		    	job.add("title", resultset.getString(7));
+		    	job.add("start", resultset.getString(6));
+		    	jab.add(job);
 			 
-		 return "NOUSER"; 
-		 
-		 }}
+		 } 
+			 
+		 JsonArray array = jab.build();
+		 return array;
+		 }
 		 
 		 catch(SQLException e)
 		 {
 		 e.printStackTrace();
 		 }
-		 
-		 return "Failure";  // On failure, send a message from here.
+		 JsonObjectBuilder job = Json.createObjectBuilder();
+		 job.add("title", "Failure");
+		 JsonArray array = jab.build();
+		 return array; // On failure, send a message from here.
 		 }
 	}
 

@@ -1,5 +1,5 @@
 package servlets;
-import database.loginDAO;
+import database.calendarDAO;
 import java.io.IOException;  
 import java.io.PrintWriter;
 
@@ -27,13 +27,10 @@ public class CalendarServlet extends HttpServlet {
     	String eind = request.getParameter("end");
     	String email = request.getParameter("email");
     	
-    	JsonArrayBuilder jab = Json.createArrayBuilder();
-    	JsonObjectBuilder job = Json.createObjectBuilder();
-    	job.add("title", email);
-    	job.add("start", "2017-06-01");
-    	jab.add(job);
-    	JsonArray array = jab.build();
-        response.getWriter().write(array.toString());
+    	calendarDAO calendarDAO = new calendarDAO();
+    	  
+    	JsonArray getCalendar = calendarDAO.getCalendar(email);
+        response.getWriter().write(getCalendar.toString());
     	
     	
     }
