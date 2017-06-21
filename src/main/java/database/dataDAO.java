@@ -26,8 +26,8 @@ public class dataDAO extends BaseDAO{
 		LocalDate volgendeDate = localDate.plusMonths(1);
 		
 		
-		 String querycurrmonth = dtf.format(localDate)+"-01";
-		 String querynextmonth= dtf.format(volgendeDate)+"-01";
+		 String querycurrmonth = dtf.format(localDate).toString()+"-01";
+		 String querynextmonth= dtf.format(volgendeDate).toString()+"-01";
 		 
 		 try (Connection con = super.getConnection()) {
 
