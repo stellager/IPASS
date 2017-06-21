@@ -130,7 +130,7 @@ function getCookie(name) {
 	}
 	function getAjax() {
 		 
-		$.ajax({
+		var request = $.ajax({
 		    url: 'DataServlet',
 		    type: 'GET',
 		    data: { email: getCookie("login")} ,
