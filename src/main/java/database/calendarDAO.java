@@ -36,7 +36,7 @@ public class calendarDAO extends BaseDAO{
 		    	JsonObjectBuilder job = Json.createObjectBuilder();
 		    	
 		    	
-		    	String datetime = resultset.getString(6)+"T"+resultset.getString(8);
+		    	String datetime = resultset.getString(6)+"T"+resultset.getString(8)+":00";
 		    	String simpledate = resultset.getString(6)+"-"+resultset.getString(8);
 		    	job.add("start", datetime);
 		    	double uren = resultset.getInt(4)/60;
@@ -53,8 +53,8 @@ public class calendarDAO extends BaseDAO{
 		    	String format = df.format(date.getTime());
 		    	StringBuilder enddate = new StringBuilder(format);
 		    	enddate.setCharAt(10, 'T');
-			 	job.add("end", enddate.toString());
-			 	job.add("title",enddate.toString()+"//"+ datetime);
+			 	job.add("end", enddate.toString()+":00");
+			 	job.add("title",resultset.getString(7));
 		    	jab.add(job);
 			 
 		 } 
