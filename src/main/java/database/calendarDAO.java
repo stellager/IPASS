@@ -36,7 +36,7 @@ public class calendarDAO extends BaseDAO{
 		    	String datetime = resultset.getString(6)+"T"+resultset.getString(8);
 		    	job.add("start", datetime);
 		    	
-		    	job.add("end", datetime);
+		    	
 		    	jab.add(job);
 			 
 		 } 
