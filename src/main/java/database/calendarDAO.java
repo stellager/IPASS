@@ -53,7 +53,7 @@ public class calendarDAO extends BaseDAO{
 		    	String format = df.format(date.getTime());
 		    	StringBuilder enddate = new StringBuilder(format);
 		    	enddate.setCharAt(10, 'T');
-			 	job.add("end", enddate.toString()+":00");
+			 	job.add("end", enddate.toString());
 			 	job.add("title",resultset.getString(7));
 			 	job.add("allDay", false);
 			 	job.add("id", count);
