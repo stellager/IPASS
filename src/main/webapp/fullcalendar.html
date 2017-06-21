@@ -115,26 +115,52 @@
 				
 			},
 			
-
-			eventSources: [
-
-	            // your event source
-	            {
-	                url: 'CalendarServlet',
-	                type: 'GET',
-	                data: {
-	                    email: getCookie("login")
-	                    
-	                },
-	                error: function() {
-	                    alert('there was an error while fetching events!');
-	                }
-	               
-	            }
-
-	            // any other sources...
-
-	        ],				
+			events: [
+				{
+					title: 'All Day Event',
+					start: new Date(y, m, 1)
+				},
+				{
+					id: 999,
+					title: 'Repeating Event',
+					start: new Date(y, m, d-3, 16, 0),
+					allDay: false,
+					className: 'info'
+				},
+				{
+					id: 999,
+					title: 'Repeating Event',
+					start: new Date(y, m, d+4, 16, 0),
+					allDay: false,
+					className: 'info'
+				},
+				{
+					title: 'Meeting',
+					start: new Date(y, m, d, 10, 30),
+					allDay: false,
+					className: 'important'
+				},
+				{
+					title: 'Lunch',
+					start: new Date(y, m, d, 12, 0),
+					end: new Date(y, m, d, 14, 0),
+					allDay: false,
+					className: 'important'
+				},
+				{
+					title: 'Birthday Party',
+					start: new Date(y, m, d+1, 19, 0),
+					end: new Date(y, m, d+1, 22, 30),
+					allDay: false,
+				},
+				{
+					title: 'Click for Google',
+					start: new Date(y, m, 28),
+					end: new Date(y, m, 29),
+					url: 'http://google.com/',
+					className: 'success'
+				}
+			],			
 		});
 		
 		
@@ -208,19 +234,4 @@
 <div style='clear:both'></div>
 </div>
 </body>
-<script>
-function getCookie(name) {
-	  var value = "; " + document.cookie;
-	  var parts = value.split("; " + name + "=");
-	  if (parts.length == 2) return parts.pop().split(";").shift();
-	}
-	function setUser(){
-		var email = getCookie("login");
-		var name = getCookie("name");
-		console.log(email);
-		console.log(name);
-		var welcome = document.getElementById("welcome");
-		welcome.innerHTML = name;
-	}
-	</script>
 </html>
