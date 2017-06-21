@@ -37,13 +37,20 @@ public class calendarDAO extends BaseDAO{
 		    	
 		    	job.add("title", resultset.getString(7));
 		    	String datetime = resultset.getString(6)+"T"+resultset.getString(8);
+		    	String simpledate = resultset.getString(6)+"-"+resultset.getString(8);
 		    	job.add("start", datetime);
 		    	double uren = resultset.getInt(4)/60;
 			    int minuten = (int) uren;
 			 
 			 
 		    	
-		    	
+			    SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd-HH:mm");
+		    	java.util.Date d = df.parse(simpledate);
+		    	Calendar date = Calendar.getInstance();
+		    	date.setTime(d);
+		    	long t= date.getTimeInMillis();
+		    	Date afterAddingTenMins=new Date(t + (minuten * 60000));
+			 	job.add("end", afterAddingTenMins.toString());
 		    	
 		    	jab.add(job);
 			 
