@@ -114,6 +114,7 @@
 	</div>
 </body>
 <script>
+
 function getCookie(name) {
 	  var value = "; " + document.cookie;
 	  var parts = value.split("; " + name + "=");
@@ -144,6 +145,11 @@ function getCookie(name) {
 			console.log("failure");
 		});
 	}
+	var el = document.getElementById("clickMe");
+	if (el.addEventListener)
+	    el.addEventListener("click", getAjax, false);
+	else if (el.attachEvent)
+	    el.attachEvent('onclick', getAjax);
 	</script>
 	<!--   Core JS Files   -->
 	
