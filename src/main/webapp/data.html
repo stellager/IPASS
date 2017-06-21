@@ -74,7 +74,9 @@
 		<div class="section">
 		<div class="main main-raised">
 			<div class="container">
-			
+			<form action = "getAjax()">
+	                <button type = "submit" class="btn btn-success" >Sign Up</button>
+	            </div>
 		    	
 		            </div>
 	            </div>
@@ -130,6 +132,23 @@ function getCookie(name) {
 		console.log(name);
 		var welcome = document.getElementById("welcome");
 		welcome.innerHTML = name;
+	}
+	function getAjax() {
+		 
+		$.ajax({
+		    url: 'DataServlet',
+		    type: 'GET',
+		    data: { email: getCookie("login")} ,
+		    contentType: 'application/json; charset=utf-8'
+		});
+
+		request.done(function(data) {
+		      console.log("success");
+		});
+
+		request.fail(function(jqXHR, textStatus) {
+			console.log("failure");
+		});
 	}
 	</script>
 	<!--   Core JS Files   -->
