@@ -32,12 +32,12 @@ public class dataDAO extends BaseDAO{
 			 count+=1;
 		    	JsonObjectBuilder job = Json.createObjectBuilder();
 		    	
-		    	double raw= resultset.getInt(2)/3600;
+		    	double raw= resultset.getDouble(2)/3600;
 		    	 
 		    	    String[] arr=String.valueOf(raw).split("\\.");
-		    	    
-		    	    int  uren =Integer.parseInt(arr[0]);
-		    	    int minuten=Integer.parseInt(arr[1]);
+		    	    int uren = (int)raw;
+		    	    int minuten = (int)(raw-uren);
+		    	  
 			    double rawkm = resultset.getInt(3)/1000;
 			    double round = (int)rawkm*10 /10;
 			 	job.add("ritnaam", resultset.getString(1));
