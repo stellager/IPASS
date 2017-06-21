@@ -135,6 +135,7 @@ function getCookie(name) {
 		console.log(name);
 		var welcome = document.getElementById("welcome");
 		welcome.innerHTML = name;
+		getAjax();
 		
 	}
 	function getAjax() {
@@ -165,7 +166,7 @@ function getCookie(name) {
 		window.location.href = 'index.html';
 		
 	}
-	window.onload = getAjax; 
+	
 
 	</script>
 	<!--   Core JS Files   -->
