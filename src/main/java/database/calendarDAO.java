@@ -50,7 +50,10 @@ public class calendarDAO extends BaseDAO{
 		    	date.setTime(d);
 		    	long t= date.getTimeInMillis();
 		    	Date afterAddingTenMins=new Date(t + (minuten * 60000));
-			 	job.add("end", afterAddingTenMins.toString());
+		    	String enddate = afterAddingTenMins.toString();
+		    	StringBuilder endstring = new StringBuilder(enddate);
+		    	endstring.setCharAt(10, 'T');
+			 	job.add("end", endstring.toString());
 		    	
 		    	jab.add(job);
 			 
