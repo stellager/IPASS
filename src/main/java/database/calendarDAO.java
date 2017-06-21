@@ -55,7 +55,7 @@ public class calendarDAO extends BaseDAO{
 		    	enddate.setCharAt(10, 'T');
 			 	job.add("end", enddate.toString()+":00");
 			 	job.add("title",resultset.getString(7));
-			 	job.add("allDay", "false");
+			 	job.add("allDay", false);
 			 	job.add("id", count);
 			 	job.add("className", "info");
 		    	jab.add(job);
