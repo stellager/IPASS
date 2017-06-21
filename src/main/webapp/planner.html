@@ -46,7 +46,7 @@
 		            <span class="icon-bar"></span>
 		            <span class="icon-bar"></span>
         		</button>
-        		<a class="navbar-brand" id= "welcome" href = "Profiel.html"  > Welcome, [Naam]<div class="ripple-container"></div></a>
+        		<a class="navbar-brand" id= "welcome" href = "Profiel.html"  > <div class="ripple-container"></div></a>
 				
         	</div>
 
@@ -62,9 +62,7 @@
 					<ul class="nav navbar-nav navbar-right">
 					<li>
 					   
-	                        <a href="http://www.creative-tim.com">
-	                            Logout
-	                        </a>
+	                        <input id="clickMe" type="button" value="Logout" onclick="logOut();" />
 							
 	                  </li>
 					  </ul>
@@ -245,6 +243,14 @@
 			
 			
 		}
+		function logOut(){
+			var delete_cookie = function(name) {
+			    document.cookie = name + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+			};
+			delete_cookie("name");
+			delete_cookie("login");
+			window.location.href = 'home.html';
+		}
 		
 		
       function initMap() {
@@ -328,10 +334,7 @@
             me.directionsDisplay.setDirections(response);
             var info = JSON.parse(JSON.stringify(response["routes"]));
             
-            console.log(info[0]);
-            console.log( typeof info[0]["legs"]["distance"]);
-            console.log(info[0]["legs"]);
-            
+           
          
          	
             afstand.innerHTML = JSON.stringify(info[0]["legs"][0]["distance"]["text"]);
