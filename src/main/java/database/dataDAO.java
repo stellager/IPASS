@@ -36,12 +36,13 @@ public class dataDAO extends BaseDAO{
 		    	 
 		    	    String[] arr=String.valueOf(raw).split("\\.");
 		    	    int uren = (int)raw;
-		    	    int minuten = (int)(raw-uren);
+		    	    double minuten1 = raw-uren;
+		    	    int minuten = (int)(minuten1);
 		    	  
 			    double rawkm = resultset.getInt(3)/1000;
 			    double round = (int)rawkm*10 /10;
 			 	job.add("ritnaam", resultset.getString(1));
-			 	job.add("keergereden",resultset.getInt(4));
+			 	job.add("keer gereden",resultset.getInt(4));
 			 	job.add("totaalkm", String.valueOf(round));
 			 	job.add("totaaltijd", "Totale tijd: "+Integer.toString(uren)+" uur en "+minuten+" minuten.");
 			 	

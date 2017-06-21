@@ -145,7 +145,7 @@ function getCookie(name) {
 		      console.log("success");
 		      $.each(data, function loadCountries(){	
 		  		$("#countryTable").append(
-		  		"<td>"+this.ritnaam+ "</td><td>"+this.keergereden+"</td><td>"+this.totaalkm+"</td><td>"+this.totaaltijd+"</td><td>");
+		  		"<td>"+this.ritnaam+ "</td><td>"+this.keergereden+"</td><td>"+this.totaalkm+"</td><td>"+this.totaaltijd+"</td><td></tr>");
 		  	 });
 		});
 		request.fail(function(jqXHR, textStatus) {
