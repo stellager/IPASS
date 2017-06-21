@@ -27,13 +27,18 @@ String ritnaam = request.getParameter("naam");
 timefix timefix = new timefix();
 String tijd = timefix.fixedTime(request.getParameter("tijd"));
 Cookie[] cookies = request.getCookies();
-String email = cookies[0].getValue();
 
+String email;
+for (Cookie cookie : cookies) {
+	   if (cookie.getName().equals("login")) {
+		  email = cookie.getValue();
+	    }
 
 
 ritDAO ritDAO = new ritDAO();
 
 //The core Logic of the Registration application is present here. We are going to insert user data in to the database.
+
 String ritOpgeslagen = ritDAO.saveRit(beginpunt,eindpunt, afstand, duur,email, date, ritnaam,tijd);
 if(ritOpgeslagen.equals("SUCCESS"))   //On success, you can display a message to user on Home page
 {
