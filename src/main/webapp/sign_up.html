@@ -21,7 +21,7 @@
 
 </head>
 
-<body class="signup-page">
+<body onload = "setUser()" class="signup-page">
 	<nav class="navbar navbar-transparent navbar-absolute">
     	<div class="container">
         	<!-- Brand and toggle get grouped for better mobile display -->
@@ -98,10 +98,10 @@
 	  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
 		<span aria-hidden="true"><i class="material-icons">clear</i></span>
 	  </button>
-      <b>Error Alert:</b>
+      <b>Foutmelding:</b>
      
 
-       <p><%=(request.getAttribute("errMessage") == null) ? "": request.getAttribute("errMessage")%></p>
+       <p>E- Mail is al in gebruik</p>
     </div>
 </div>
 
