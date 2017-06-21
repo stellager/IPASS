@@ -69,7 +69,9 @@
 		<div class="main main-raised">
 			<div class="container">
 			<input id="clickMe" type="button" value="clickme" onclick="getAjax();" />
-		    	
+		    	<table id="countryTable">
+ <tr> <th> Land </th> <th> Hoofdstad </th> <th> Regio </th> <th> Oppervlakte </th> <th> Inwoners </th> </tr>
+ </table>
 		            </div>
 	            </div>
 
@@ -128,22 +130,27 @@ function getCookie(name) {
 		
 	}
 	function getAjax() {
-		 
-		var request = $.ajax({
-		    url: 'DataServlet',
-		    type: 'GET',
-		    data: { email: getCookie("login")} ,
-		    contentType: 'application/json; charset=utf-8'
-		});
-
-		request.done(function(data) {
-		      console.log("success");
-		});
-
-		request.fail(function(jqXHR, textStatus) {
-			console.log("failure");
-		});
-	}
+		  $.getJSON({ 
+			 	 url: 'DataServlet',
+			    type: 'GET',
+			    data: { email: getCookie("login")} ,
+			    contentType: 'application/json; charset=utf-8'
+			            }, 
+			            processData:true,
+			            success: function(data){
+			            	
+			            	$.each(data, function loadCountries(){
+			            		var stad = this.capital;
+			            		console.log(stad);
+			            		var stad2 = stad.replace(/"/g, '');
+			            		console.log(stad2);
+			            		var click = "<tr onClick = showWeather("+stad2+")";
+			            		$("#countryTable").append(
+			            		click+"<td>"+this.name+ "</td><td>"+this.name+"</td><td>"+this.capital+"</td><td>"+this.region+"</td><td>"+this.surface+"</td><td>"+this.population+"</td>");
+			            	 });
+			            	
+			            });
+	},
 	
 	function logOut(){
 		var delete_cookie = function(name) {
