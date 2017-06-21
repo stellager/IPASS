@@ -36,7 +36,7 @@ public class calendarDAO extends BaseDAO{
 		    	JsonObjectBuilder job = Json.createObjectBuilder();
 		    	
 		    	
-		    	String datetime = resultset.getString(6)+"T"+resultset.getString(8).substring(0, 5);
+		    	String datetime = resultset.getString(6)+"T"+resultset.getString(8);
 		    	String simpledate = resultset.getString(6)+"-"+resultset.getString(8);
 		    	job.add("start", datetime);
 		    	double uren = resultset.getInt(4)/60;
