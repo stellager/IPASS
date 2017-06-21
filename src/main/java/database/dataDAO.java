@@ -17,7 +17,7 @@ public class dataDAO extends BaseDAO{
 	JsonArrayBuilder jab = Json.createArrayBuilder();
 	public JsonArray getData(String email)
 	{
-		String query = "SELECT ritnaam , SUM(duur) AS som , SUM(afstand), count(ritnaam) FROM ritten where email = ? GROUP BY ritnaam ORDER BY som DESC";
+		String query = "SELECT ritnaam , SUM(duur) AS som , SUM(afstand), count(ritnaam) as count FROM ritten where email = ? GROUP BY ritnaam ORDER BY count DESC";
 
 		 try (Connection con = super.getConnection()) {
 
@@ -45,7 +45,7 @@ public class dataDAO extends BaseDAO{
 			 	job.add("ritnaam", resultset.getString(1));
 			 	job.add("keergereden",Integer.toString(resultset.getInt(4)));
 			 	job.add("totaalkm", String.valueOf(round));
-			 	job.add("totaaltijd", "Totale tijd: "+uren+" uur en "+minuten+minuten1+minuten2+uren+raw+resultset.getInt(2)+" minuten.");
+			 	job.add("totaaltijd", "Totale tijd: "+uren+" uur en "+resultset.getInt(2)+" minuten.");
 			 	
 		    	jab.add(job);
 		    	
