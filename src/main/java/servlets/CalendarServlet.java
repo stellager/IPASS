@@ -2,6 +2,7 @@ package servlets;
 import database.calendarDAO;
 import java.io.IOException;  
 import java.io.PrintWriter;
+import java.text.ParseException;
 
 import javax.json.Json;
 import javax.json.*;
@@ -29,7 +30,13 @@ public class CalendarServlet extends HttpServlet {
     	
     	calendarDAO calendarDAO = new calendarDAO();
     	  
-    	JsonArray getCalendar = calendarDAO.getCalendar(email);
+    	JsonArray getCalendar = null;
+		try {
+			getCalendar = calendarDAO.getCalendar(email);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
         response.getWriter().write(getCalendar.toString());
     	
     	
