@@ -19,8 +19,7 @@ public class DataServlet extends HttpServlet {
     	response.setContentType("application/json");
     	response.setCharacterEncoding("UTF-8");
     	
-    	String start = request.getParameter("start");
-    	String eind = request.getParameter("end");
+    
     	String email = request.getParameter("email");
     	
     	dataDAO dataDAO = new dataDAO();
