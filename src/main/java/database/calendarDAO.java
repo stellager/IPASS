@@ -31,11 +31,34 @@ public class calendarDAO extends BaseDAO{
 		 while (resultset.next() ) {
 			 
 		    	JsonObjectBuilder job = Json.createObjectBuilder();
+		    	String checkTime =	resultset.getString(8);
+		    	if(checkTime.contains("PM")){
+		    		String checked =checkTime.replaceAll("PM", "");
+		    		int i =Integer.parseInt(checked);
+		    		i+=12;
+		    		String Timefinal = Integer.toString(i);
+		    		
+		    		
+		    		String datetime = resultset.getString(6)+"T"+Timefinal;
+			    	job.add("title", resultset.getString(7));
+			    	job.add("start", datetime);
+			    	
+			    	job.add("end", datetime);
+			    	jab.add(job);
+		    	}
+		    	else{
+		    		String Timefinal =checkTime.replaceAll("AM", "");
+		    		String datetime = resultset.getString(6)+"T"+Timefinal;
+		    		
+		    		
+			    	job.add("title", resultset.getString(7));
+			    	job.add("start", datetime);
+			    	job.add("end", datetime);
+			    	jab.add(job);
 		    	
-		    	job.add("title", resultset.getString(7));
-		    	String datetime = resultset.getString(6)+"T"+resultset.getString(8);
-		    	job.add("start", datetime);
-		    	jab.add(job);
+		    	}
+		    	
+		    
 			 
 		 } 
 			 
