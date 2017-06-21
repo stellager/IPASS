@@ -71,5 +71,15 @@
 <servlet-name>DataServlet</servlet-name>
 <url-pattern>/DataServlet</url-pattern>
 </servlet-mapping>
+<servlet>
+<description></description>
+<display-name>DataServlet2</display-name>
+<servlet-name>DataServlet2</servlet-name>
+<servlet-class>servlets.DataServlet2</servlet-class>
+</servlet>
+<servlet-mapping>
+<servlet-name>DataServlet2</servlet-name>
+<url-pattern>/DataServlet2</url-pattern>
+</servlet-mapping>
 
 </web-app>

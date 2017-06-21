@@ -78,6 +78,13 @@
  <tr> <th>Ritnaam </th> <th> Aantal </th> <th> Totaal KM </th> <th> Totale tijd </th> </tr>
  </tbody>
  </table>
+ 
+ <p> Volledig overzicht </p>
+		    	<table class = "table" id="countryTable2">
+		    	<tbody>
+ <tr> <th>Ritnaam </th> <th> Aantal </th> <th> Totaal KM </th> <th> Totale tijd </th> </tr>
+ </tbody>
+ </table>
 		            </div>
 	            </div>
 
@@ -152,6 +159,22 @@ function getCookie(name) {
 		  	 });
 		});
 		request.fail(function(jqXHR, textStatus) {
+			console.log("failure");
+		});
+		var request2 = $.ajax({
+		    url: 'DataServlet2',
+		    type: 'GET',
+		    data: { email: getCookie("login")} ,
+		    contentType: 'application/json; charset=utf-8'
+		});
+		request2.done(function(data) {
+		      console.log("success");
+		      $.each(data, function loadCountries(){	
+		  		$("#countryTable").append(
+		  		"<tr><td>"+this.ritnaam+ "</td><td>"+this.keergereden+"</td><td>"+this.totaalkm+"</td><td>"+this.totaaltijd+"</td><td></tr>");
+		  	 });
+		});
+		request2.fail(function(jqXHR, textStatus) {
 			console.log("failure");
 		});
 	}
