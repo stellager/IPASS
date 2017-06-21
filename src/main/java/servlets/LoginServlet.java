@@ -43,7 +43,7 @@ public class LoginServlet extends HttpServlet {
         }
         else   //On Failure, display a meaningful message to the User.
         {
-        	request.getRequestDispatcher("home.html").forward(request, response);
+        	request.getRequestDispatcher("index.html").forward(request, response);
         }
       
     }  
