@@ -54,7 +54,7 @@ public class calendarDAO extends BaseDAO{
 		    	StringBuilder enddate = new StringBuilder(format);
 		    	enddate.setCharAt(10, 'T');
 			 	job.add("end", enddate.toString());
-			 	job.add("title",resultset.getString(7));
+			 	job.add("title",enddate.toString()+"//"+ datetime);
 		    	jab.add(job);
 			 
 		 } 
