@@ -30,9 +30,9 @@ public class calendarDAO extends BaseDAO{
 		 ResultSet resultset= pstmt.executeQuery();
 		 
 	    	
-		
+		 int count=0;
 		 while (resultset.next() ) {
-			 
+			 	count+=1;
 		    	JsonObjectBuilder job = Json.createObjectBuilder();
 		    	
 		    	
@@ -55,6 +55,8 @@ public class calendarDAO extends BaseDAO{
 		    	enddate.setCharAt(10, 'T');
 			 	job.add("end", enddate.toString()+":00");
 			 	job.add("title",resultset.getString(7));
+			 	job.add("allDay", "false");
+			 	job.add("id", count);
 		    	jab.add(job);
 			 
 		 } 
