@@ -50,7 +50,7 @@ public class dataDAO extends BaseDAO{
 		    	    String[] arr=String.valueOf(raw).split("\\.");
 		    	    int uren = (int)raw1;
 		    	    double minuten1 = raw1-uren;
-		    	    double minuten2 = minuten1*100;
+		    	    double minuten2 = minuten1*60;
 		    	    int minuten = (int)minuten2;
 		    	  
 			    double rawkm = resultset.getInt(3)/1000;
