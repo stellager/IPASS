@@ -29,18 +29,10 @@ public class dataDAO extends BaseDAO{
 		 
 		 int count=0;
 		 while (resultset.next() ) {
-			 	count+=1;
+			 count+=1;
 		    	JsonObjectBuilder job = Json.createObjectBuilder();
-		    	double raw= resultset.getInt(2)/360;
-			    int uren = (int) raw;
-			    int minuten = (int) ((raw - uren)*100);
-			    double rawkm = resultset.getInt(3)/1000;
-			    double round = (int)rawkm*10 /10;
-			 	job.add("ritnaam", resultset.getString(1));
-			 	job.add("keer gereden",resultset.getInt(4));
-			 	job.add("totaalkm", String.valueOf(round));
-			 	job.add("totaaltijd", "Totale tijd: "+Integer.toString(uren)+" uur en "+Integer.toString(minuten)+".");
-			 	
+		    	
+		    	job.add("test", resultset.getString(1));
 		    	jab.add(job);
 			 
 		 } 
