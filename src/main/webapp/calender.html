@@ -11,24 +11,79 @@
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
 
 	<!--     Fonts and icons     -->
-	<link rel='stylesheet' href='fullcalendar/fullcalendar.css' />
-	<script src='fullcalendar/lib/jquery.min.js'></script>
-	<script src='fullcalendar/lib/moment.min.js'></script>
-	<script src='fullcalendar/fullcalendar.js'></script>
+
 
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" />
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
-	<link href="fullcalendar/fullcalendar.min.css" rel="stylesheet">
-	<link href="fullcalendar/fullcalendar.print.min.css" rel="stylesheet" media="print">
+	<link href='fullcalendar/fullcalendar.css' rel='stylesheet' />
+<link href='fullcalendar/fullcalendar.print.css' rel='stylesheet' media='print' />
+
+<script src='/fullcalendar/jquery/jquery-1.10.2.js'></script>
+<script src='/fullcalendar/jquery/jquery-ui.custom.min.js'></script>
+
+<script src='/fullcalendar/fullcalendar.js'></script>
 	<!-- CSS Files -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
     <link href="assets/css/material-kit.css" rel="stylesheet"/>
-<script>$(document).ready(function() {
-    // page is now ready, initialize the calendar...
-    $('#calendar').fullCalendar({
-    	defaultView: 'agendaWeek',
-    	eventSources: [
+<script>	$(document).ready(function() {
+    var date = new Date();
+	var d = date.getDate();
+	var m = date.getMonth();
+	var y = date.getFullYear();
+	
+	/*  className colors
+	
+	className: default(transparent), important(red), chill(pink), success(green), info(blue)
+	
+	*/		
+	
+	
+	/* initialize the calendar
+	-----------------------------------------------------------------*/
+	
+	var calendar =  $('#calendar').fullCalendar({
+		header: {
+			left: 'title',
+			center: 'agendaDay,agendaWeek,month',
+			right: 'prev,next today'
+		},
+		editable: false,
+		firstDay: 1, //  1(Monday) this can be changed to 0(Sunday) for the USA system
+		selectable: false,
+		defaultView: 'week',
+		
+		axisFormat: 'h:mm',
+		columnFormat: {
+            month: 'ddd',    // Mon
+            week: 'ddd d', // Mon 7
+            day: 'dddd M/d',  // Monday 9/7
+            agendaDay: 'dddd d'
+        },
+        titleFormat: {
+            month: 'MMMM yyyy', // September 2009
+            week: "MMMM yyyy", // September 2009
+            day: 'MMMM yyyy'                  // Tuesday, Sep 8, 2009
+        },
+		allDaySlot: false,
+		selectHelper: true,
+		select: function(start, end, allDay) {
+			var title = prompt('Event Title:');
+			if (title) {
+				calendar.fullCalendar('renderEvent',
+					{
+						title: title,
+						start: start,
+						end: end,
+						allDay: allDay
+					},
+					true // make the event "stick"
+				);
+			}
+			calendar.fullCalendar('unselect');
+		},
+		
+		eventSources: [
             // your event source
             {
                 url: 'CalendarServlet',
@@ -39,14 +94,14 @@
                 },
                 error: function() {
                     alert('there was an error while fetching events!');
-                },
-                color: 'yellow',   // a non-ajax option
-                textColor: 'black' // a non-ajax option
+                }
+               
             }
             // any other sources...
-        ]
-        // put your options and callbacks here
-    })
+        ]			
+	});
+	
+	
 });</script>
 </head>
 
