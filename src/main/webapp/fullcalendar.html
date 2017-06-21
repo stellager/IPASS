@@ -61,14 +61,6 @@
 		        select: function(start, end) {
 		            var title = prompt('Event:');
 
-		             $.ajax({
-		    url: "CalendarServlet",
-		    type: 'GET',
-		    data: {"email": getCookie("login")},
-		    processData: false,
-		    contentType: 'application/json'
-		});
-
 		            if (title) {
 		                calendar.fullCalendar('renderEvent',
 		                    {
@@ -84,7 +76,25 @@
 		        },
 		        editable: true,
 
-		        events: "CalendarServlet",
+		        eventSources: [
+
+		            // your event source
+		            {
+		                url: 'CalendarServlet',
+		                type: 'GET',
+		                data: {
+		                    email: getCookie("login")
+		                    
+		                },
+		                error: function() {
+		                    alert('there was an error while fetching events!');
+		                }
+		               
+		            }
+
+		            // any other sources...
+
+		        ],	
 
 		        eventDrop: function(event, delta) {
 		            alert(event.title + ' was moved ' + delta + ' days\n' +
