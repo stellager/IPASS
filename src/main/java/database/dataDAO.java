@@ -7,7 +7,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.time.*;
-
+import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
 
 import javax.json.Json;
 import javax.json.JsonArray;
@@ -19,11 +20,14 @@ public class dataDAO extends BaseDAO{
 	public JsonArray getData(String email)
 	{
 		String query = "SELECT ritnaam , SUM(duur) AS som , SUM(afstand), count(ritnaam) as count FROM ritten where email = ? AND date >= ? AND date <? GROUP BY ritnaam ORDER BY count DESC";
-		YearMonth dezemaand = YearMonth.now();
-		YearMonth volgendemaand = dezemaand.plusMonths(1);
-		 SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-		 String querycurrmonth = df.format(dezemaand);
-		 String querynextmonth= df.format(volgendemaand);
+		 
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM");
+		LocalDate localDate = LocalDate.now();
+		LocalDate volgendeDate = localDate.plusMonths(1);
+		
+		
+		 String querycurrmonth = dtf.format(localDate);
+		 String querynextmonth= dtf.format(volgendeDate);
 		 
 		 try (Connection con = super.getConnection()) {
 
