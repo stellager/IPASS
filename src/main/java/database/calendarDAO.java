@@ -33,7 +33,8 @@ public class calendarDAO extends BaseDAO{
 		    	JsonObjectBuilder job = Json.createObjectBuilder();
 		    	
 		    	job.add("title", resultset.getString(7));
-		    	job.add("start", resultset.getString(6));
+		    	String datetime = resultset.getString(6)+"T"+resultset.getString(8);
+		    	job.add("start", datetime);
 		    	jab.add(job);
 			 
 		 } 
