@@ -19,22 +19,23 @@ public class dataDAO extends BaseDAO{
 	JsonArrayBuilder jab = Json.createArrayBuilder();
 	public JsonArray getData(String email)
 	{
-		String query = "SELECT ritnaam , SUM(duur) AS som , SUM(afstand), count(ritnaam) as count FROM ritten where email = ? AND date >= ? AND date <? GROUP BY ritnaam ORDER BY count DESC";
-		 
-		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM");
+		String query = "SELECT ritnaam , SUM(duur) AS som , SUM(afstand), count(ritnaam) as count FROM ritten where email = ? AND date >= ? AND date <= ? GROUP BY ritnaam ORDER BY count DESC";
+		
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		LocalDate localDate = LocalDate.now();
+		LocalDate curr = localDate.minusMonths(1);
+		LocalDate dezedate = curr.withDayOfMonth(curr.lengthOfMonth());
 		LocalDate volgendeDate = localDate.plusMonths(1);
+		LocalDate volgendedate = volgendeDate.withDayOfMonth(1);
 		
 		
-		 String querycurrmonth = dtf.format(localDate).toString()+"-01";
-		 String querynextmonth= dtf.format(volgendeDate).toString()+"-01";
 		 
 		 try (Connection con = super.getConnection()) {
 
 		 PreparedStatement pstmt = con.prepareStatement(query);
 		 pstmt.setString(1, email);
-		 pstmt.setString(2, querycurrmonth);
-		 pstmt.setString(3, querynextmonth);
+		 pstmt.setDate(2, Date.valueOf(dezedate));
+		 pstmt.setDate(3, Date.valueOf(volgendedate));
 		
 		 
 		 ResultSet resultset= pstmt.executeQuery();
@@ -58,7 +59,7 @@ public class dataDAO extends BaseDAO{
 			 	job.add("keergereden",Integer.toString(resultset.getInt(4)));
 			 	job.add("totaalkm", String.valueOf(round));
 			 	job.add("totaaltijd", uren+" uur en "+minuten+" minuten.");
-			 	job.add("faal", pstmt.toString());
+			 	
 		    	jab.add(job);
 		    	
 			 
