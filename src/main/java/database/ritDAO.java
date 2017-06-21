@@ -1,6 +1,7 @@
 package database;
 
 import java.sql.*;
+import java.util.UUID;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,10 +12,10 @@ public class ritDAO extends BaseDAO{
 public String saveRit(String beginpunt, String eindpunt, int afstand, int duur,String email, String date, String ritnaam, String tijd)
 {
 	String querydan = "empty";	
-	 String query = "INSERT INTO ritten values (?,?,?,?,?,?,?,?)";
-
+	 String query = "INSERT INTO ritten values (?,?,?,?,?,?,?,?,?)";
+	 
 	 try (Connection con = super.getConnection()) {
-
+		 
 	 PreparedStatement pstmt = con.prepareStatement(query);
 	 pstmt.setString(1, beginpunt);
 	 pstmt.setString(2, eindpunt);
@@ -24,6 +25,7 @@ public String saveRit(String beginpunt, String eindpunt, int afstand, int duur,S
 	 pstmt.setString(6, date);
 	 pstmt.setString(7, ritnaam);
 	 pstmt.setString(8, tijd);
+	 pstmt.setString(9, UUID.randomUUID().toString());
 	 querydan=pstmt.toString();
 	 PreparedStatement pstmt2 = con.prepareStatement(querydan);
 	 int i= pstmt2.executeUpdate();
