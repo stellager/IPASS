@@ -31,17 +31,19 @@ public class dataDAO extends BaseDAO{
 		 while (resultset.next() ) {
 			 count+=1;
 		    	JsonObjectBuilder job = Json.createObjectBuilder();
-
+		    	
 		    	double raw= resultset.getInt(2)/360;
-			    int uren = (int) raw;
-			    double minuten = ((raw - uren)*100);
-			    int minuten2 = (int) minuten;
+		    	 
+		    	    String[] arr=String.valueOf(raw).split("\\.");
+		    	    
+		    	    int  uren =Integer.parseInt(arr[0]);
+		    	    int minuten=Integer.parseInt(arr[1]);
 			    double rawkm = resultset.getInt(3)/1000;
 			    double round = (int)rawkm*10 /10;
 			 	job.add("ritnaam", resultset.getString(1));
 			 	job.add("keer gereden",resultset.getInt(4));
 			 	job.add("totaalkm", String.valueOf(round));
-			 	job.add("totaaltijd", "Totale tijd: "+Integer.toString(uren)+" uur en "+Integer.toString(minuten2)+" minuten.");
+			 	job.add("totaaltijd", "Totale tijd: "+Integer.toString(uren)+" uur en "+Integer.toString(minuten)+" minuten.");
 			 	
 		    	jab.add(job);
 		    	
