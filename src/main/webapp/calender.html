@@ -119,7 +119,8 @@
 	});
 	
 	
-});</script>
+});
+$('#calendar').fullCalendar('refetchEvents');</script>
 </head>
 
 <body onload = "setUser()" class="landing-page">
@@ -252,7 +253,7 @@ function postAjax() {
 	});
 	request.done(function() {
 	      console.log("success");
-	      $('#calendar').fullCalendar( 'refetchEvents' );
+	      $('#calendar').fullCalendar('refetchEvents');
 	  	
 	});
 	
