@@ -21,7 +21,7 @@ public class calendarDAO extends BaseDAO{
 	{
 		String query = "SELECT * FROM ritten WHERE email = ?";
 		
-		 try (Connection con = super.getConnection();) {
+		 try (Connection con = getConnection();) {
 			 
 		 PreparedStatement pstmt = con.prepareStatement(query);
 		 pstmt.setString(1, email);
