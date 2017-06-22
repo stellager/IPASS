@@ -222,7 +222,7 @@ function postAjax(idname) {
 	var request = $.ajax({
 	    url: 'DeleteServlet',
 	    type: 'post',
-	    data: { id: "huelo"} ,
+	    data: { id: idname} ,
 	    
 	});
 	request.done(function() {

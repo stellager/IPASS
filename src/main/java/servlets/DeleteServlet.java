@@ -4,12 +4,13 @@ import java.io.IOException;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import database.removeDAO;
 
-public class DeleteServlet {
+public class DeleteServlet extends HttpServlet  {
 	private static final long serialVersionUID = 1L;
 	  public DeleteServlet() {
 	    	}
@@ -32,7 +33,7 @@ public class DeleteServlet {
       }
       else   //On Failure, display a meaningful message to the User.
       {
-    	  request.getRequestDispatcher("home_login.html").forward(request, response);
+      	
       }
     
   }  
