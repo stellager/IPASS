@@ -24,6 +24,9 @@ public class BaseDAO {
  pool.setDriverClassName("org.postgresql.Driver");
  pool.setUrl(dbUrl);
  pool.setInitialSize(0);
+ pool.setMinIdle(0);
+ pool.setMaxIdle(0);
+ 
 
  connectionPool = pool;
  } else {
