@@ -61,7 +61,8 @@ public class calendarDAO extends BaseDAO{
 		    	jab.add(job);
 			 
 		 } 
-		 con.close();
+		 if ( con != null )  // close connection
+	         con.close();
 		 JsonArray array = jab.build();
 		 return array;
 		 }
