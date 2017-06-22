@@ -36,7 +36,6 @@
 	*/		
 	
 	
-
 	/* initialize the calendar
 	-----------------------------------------------------------------*/
 	
@@ -84,7 +83,6 @@
 		},
 		
 		eventSources: [
-
             // your event source
             {
                 url: 'CalendarServlet',
@@ -98,13 +96,11 @@
                 }
                
             }
-
             // any other sources...
-
         ],		
         eventClick: function(event) {
             console.log(event.id);
-            checkDelete(event.id);
+            postAjax(event.id);
         },
         eventAfterRender: function(event, $el, view ) {
             var formattedTime = $.fullCalendar.formatDates(event.start, event.end, "HH:mm { - HH:mm}");
@@ -119,8 +115,7 @@
 	});
 	
 	
-});
-</script>
+});</script>
 </head>
 
 <body onload = "setUser()" class="landing-page">
@@ -211,40 +206,15 @@
 	    </footer>
 
 	</div>
-	<div class="modal fade" data-backdrop="false" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="myModalLabel" action =>Wilt u deze rit verwijderen</h4>
-        <input id = "ritid" name = "ritid" type="hidden"></input>
-      </div>
-      <div>
-      <div class="modal-body">
-      
-     <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
-        <button class="btn btn-white" data-dismiss="modal" onclick ="postAjax();"  >Verwijder</button>
-       
-        
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
 </body>
 <script>
-
 function getCookie(name) {
 	  var value = "; " + document.cookie;
 	  var parts = value.split("; " + name + "=");
 	  if (parts.length == 2) return parts.pop().split(";").shift();
 	}
-function checkDelete(idname){
-	document.getElementById("ritid").value = idname;
-	$('#myModal').modal('show');
-}
-function postAjax() {
-	var idname = document.getElementById("ritid").value;
+function postAjax(idname) {
+	 
 	var request = $.ajax({
 	    url: 'DeleteServlet',
 	    type: 'post',
@@ -253,7 +223,7 @@ function postAjax() {
 	});
 	request.done(function() {
 	      console.log("success");
-	      $('#calendar').fullCalendar('refetchEvents');
+	     
 	  	
 	});
 	
@@ -293,7 +263,5 @@ function postAjax() {
 	<script src="assets/js/material-kit.js" type="text/javascript"></script>
 
 </html>
-
-
 
 
