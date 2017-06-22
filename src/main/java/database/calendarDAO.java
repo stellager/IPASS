@@ -20,9 +20,9 @@ public class calendarDAO extends BaseDAO{
 	public JsonArray getCalendar(String email) throws ParseException
 	{
 		String query = "SELECT * FROM ritten WHERE email = ?";
-
-		 try  {
-			Connection con = super.getConnection();
+		
+		 try (Connection con = super.getConnection();) {
+			
 		 PreparedStatement pstmt = con.prepareStatement(query);
 		 pstmt.setString(1, email);
 		 
@@ -70,10 +70,10 @@ public class calendarDAO extends BaseDAO{
 		 
 		 catch(SQLException e)
 		 {
-			 
+			
 		 e.printStackTrace();
 		 }
-		
+		 
 		 
 		 JsonObjectBuilder job = Json.createObjectBuilder();
 		 job.add("title", "Failure");
