@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class removeDAO extends BaseDAO {
-	public String loginUser(String id)
+	public String removeRit(String id)
 	{
 		String query = "DELETE FROM ritten WHERE ritid = ?";
 
