@@ -22,7 +22,7 @@ public class calendarDAO extends BaseDAO{
 		String query = "SELECT * FROM ritten WHERE email = ?";
 		
 		 try (Connection con = super.getConnection();) {
-			con.close();
+			 
 		 PreparedStatement pstmt = con.prepareStatement(query);
 		 pstmt.setString(1, email);
 		 
@@ -38,7 +38,7 @@ public class calendarDAO extends BaseDAO{
 		    	
 		    	String datetime = resultset.getString(6)+"T"+resultset.getString(8);
 		    	String simpledate = resultset.getString(6)+"-"+resultset.getString(8);
-		    	job.add("start", datetime);
+		    	
 		    	double uren = resultset.getInt(4)/60;
 			    int minuten = (int) uren;
 			 
@@ -47,12 +47,14 @@ public class calendarDAO extends BaseDAO{
 		    	java.util.Date d = df.parse(simpledate);
 		    	Calendar date = Calendar.getInstance();
 		    	date.setTime(d);
+		    	String begintijd = df.format(date.getTime());
 		    	long t= date.getTimeInMillis();
 		    	Date afterAddingTenMins=new Date(t + (minuten * 60000));
 		    	date.setTime(afterAddingTenMins);
 		    	String format = df.format(date.getTime());
 		    	StringBuilder enddate = new StringBuilder(format);
 		    	enddate.setCharAt(10, 'T');
+		    	job.add("start", begintijd);
 			 	job.add("end", enddate.toString());
 			 	job.add("title",resultset.getString(7));
 			 	job.add("allDay", false);
