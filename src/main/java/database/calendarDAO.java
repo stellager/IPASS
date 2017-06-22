@@ -48,13 +48,15 @@ public class calendarDAO extends BaseDAO{
 		    	Calendar date = Calendar.getInstance();
 		    	date.setTime(d);
 		    	String begintijd = df.format(date.getTime());
+		    	StringBuilder begindate = new StringBuilder(begintijd);
+		    	begindate.setCharAt(10, 'T');
 		    	long t= date.getTimeInMillis();
 		    	Date afterAddingTenMins=new Date(t + (minuten * 60000));
 		    	date.setTime(afterAddingTenMins);
 		    	String format = df.format(date.getTime());
 		    	StringBuilder enddate = new StringBuilder(format);
 		    	enddate.setCharAt(10, 'T');
-		    	job.add("start", begintijd);
+		    	job.add("start", begindate.toString());
 			 	job.add("end", enddate.toString());
 			 	job.add("title",resultset.getString(7));
 			 	job.add("allDay", false);
