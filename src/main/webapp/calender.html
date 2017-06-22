@@ -104,7 +104,7 @@
         ],		
         eventClick: function(event) {
             console.log(event.id);
-            postAjax(event.id);
+            checkDelete(event.id);
         },
         eventAfterRender: function(event, $el, view ) {
             var formattedTime = $.fullCalendar.formatDates(event.start, event.end, "HH:mm { - HH:mm}");
@@ -210,15 +210,40 @@
 	    </footer>
 
 	</div>
+	<div class="modal fade" data-backdrop="false" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel" action =>Wilt u deze rit verwijderen</h4>
+        <input id = "ritid" name = "ritid" type="hidden"></input>
+      </div>
+      <div>
+      <div class="modal-body">
+      <form action="postAjax()"  method="post" class="form">
+     <button type="button" class="btn btn-default btn-simple" data-dismiss="modal">Close</button>
+        <input type="submit" value = "Save" ></a>
+        </form>
+        
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 </body>
 <script>
+
 function getCookie(name) {
 	  var value = "; " + document.cookie;
 	  var parts = value.split("; " + name + "=");
 	  if (parts.length == 2) return parts.pop().split(";").shift();
 	}
-function postAjax(idname) {
-	 
+function checkDelete(idname){
+	document.getElementById("ritid").value = idname;
+	$('#myModal').modal('show');
+}
+function postAjax() {
+	var idname = document.getElementById("ritid").value;
 	var request = $.ajax({
 	    url: 'DeleteServlet',
 	    type: 'post',
