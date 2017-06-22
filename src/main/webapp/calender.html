@@ -41,12 +41,7 @@
 	-----------------------------------------------------------------*/
 	
 	var calendar =  $('#calendar').fullCalendar({
-		 eventClick: function(calEvent, jsEvent, view) {
-
-		        console.log(calEvent.id);
-		       
-
-		    }
+	
 		header: {
 			left: 'title',
 			
@@ -107,6 +102,9 @@
             // any other sources...
 
         ],		
+        eventClick: function(event) {
+            console.log(event.id);
+        }
         eventAfterRender: function(event, $el, view ) {
             var formattedTime = $.fullCalendar.formatDates(event.start, event.end, "HH:mm { - HH:mm}");
             // If FullCalendar has removed the title div, then add the title to the time div like FullCalendar would do
