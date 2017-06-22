@@ -14,6 +14,7 @@ public class DataServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	  public DataServlet() {
 	    	}
+	  private dataDAO dataDAO;
     protected void doGet(HttpServletRequest request, HttpServletResponse response)  
                     throws ServletException, IOException {  
     	response.setContentType("application/json");
@@ -22,8 +23,7 @@ public class DataServlet extends HttpServlet {
     
     	String email = request.getParameter("email");
     	
-    	dataDAO dataDAO = new dataDAO();
-    	  
+    	
     	JsonArray getData = null;
 		getData = dataDAO.getData(email);
         response.getWriter().write(getData.toString());
