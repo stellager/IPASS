@@ -52,7 +52,7 @@ public class dataDAO extends BaseDAO{
 		    	
 			 
 		 } 
-		 con.close();	 
+		 	 
 		 JsonArray array = jab.build();
 		 return array;
 		 }
