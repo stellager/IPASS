@@ -41,7 +41,12 @@
 	-----------------------------------------------------------------*/
 	
 	var calendar =  $('#calendar').fullCalendar({
-		
+		 eventClick: function(calEvent, jsEvent, view) {
+
+		        console.log(calEvent.id));
+		       
+
+		    }
 		header: {
 			left: 'title',
 			
