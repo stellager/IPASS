@@ -26,13 +26,13 @@ public class DeleteServlet {
       if(userLoggedIn.contains("SUCCESS"))   
       {
       	
-    	  response.setStatus(HttpServletResponse.SC_OK);
+    	  request.getRequestDispatcher("home_login.html").forward(request, response);
       	 
       	
       }
       else   //On Failure, display a meaningful message to the User.
       {
-      	
+    	  request.getRequestDispatcher("home_login.html").forward(request, response);
       }
     
   }  
